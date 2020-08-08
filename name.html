@@ -92,30 +92,38 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
 
 
-        <ul class="w3-ul w3-card-4" style="width:100%">
-          <li>
+        <table id="table" class="w3-table w3-card-4 w3-bordered">
+          <!--<tr>
+            <th>
             <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
             <h6 class="w3-text-teal"><i class="fa fa-book fa-fw w3-margin-right"></i>Studying</h6>
             <div class="w3-container">
             <p>Description</p>
             </div>
             <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
-          </li>
-          <li>
+            </th>
+          </tr>
+          <tr>
+            <th>
             <h5 class="w3-opacity"><b>Task 2</b></h5>
             <h6 class="w3-text-teal"><i class="fas fa-dumbbell fas-fw w3-margin-right"></i>Fitness</h6>
             <div class="w3-container">
             <p>Description</p>
             </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>          </li>
-          <li>
+            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
+            </th>       
+          </tr>
+          <tr>
+            <th>
             <h5 class="w3-opacity"><b>Task 3</b></h5>
             <h6 class="w3-text-teal"><i class="fa fa-gamepad fa-fw w3-margin-right"></i>Hobbies</h6>
             <div class="w3-container">
             <p>Description</p>
             </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>          </li>
-        </ul>
+            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
+            </th>
+          </tr>-->
+          </table>
 
         <script>
           function removeRow(row){
@@ -162,11 +170,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <script>
 
         function addTask() {
-          var canvas = document.createElement("canvas");
-          var text = document.createAttribute("")
-          //var parent = document.getElementById("parent");
+          var table = document.getElementById("table");
+          var row = table.insertRow(0);
+          var cell = row.insertCell(0);
 
-          document.body.appendChild(btn);
+          cell.innerHTML = 
+          "<h5 class='w3-opacity'><b>Task 1</b><span class='w3-tag w3-teal w3-round w3-margin-left'>URGENT</span></h5>" +
+            "<h6 class='w3-text-teal'><i class='fa fa-book fa-fw w3-margin-right'></i>Studying</h6>" +
+            "<div class='w3-container'><p>Description</p></div>" +
+            "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge'>Mark Completed</span>";
         }
       </script>
       

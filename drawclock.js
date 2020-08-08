@@ -10,15 +10,18 @@ function drawTime() {
 
 function cleanUp(i){
     if (i < 10)
-    i = "0" + i;
+        i = "0" + i;
     return i;
 }
 
 function cleanUpHour(i)
 {
     if (i < 10)
-    i = "0" + i;
+        i = "0" + i;
     else if (i > 12)
-    i = "0" + i%12;
+    {
+        i = i%12;
+        cleanUpHour(i);
+    }
     return i;
 }
