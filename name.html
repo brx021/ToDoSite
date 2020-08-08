@@ -7,13 +7,18 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/8eb52c661f.js" crossorigin="anonymous"></script>
-<script src = "taskClass.js"></script>
+<script type="text/javascript" src ="Tasks.js"></script>
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 
 <body class="w3-light-grey">
 
+<script>
+  var taskNumber = 0;
+  var completedTask = 0;
+</script>
+  
 <!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
@@ -36,29 +41,29 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-container">
 
         <!--Percentage bars under "Tasks Status"-->
-          <p class="w3-large w3-xlarge"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Daily Status</b></p>
-          <p>Studying</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <!--<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%">-->
-              <div class="w3-center w3-text-white">0%</div>
-            <!--</div>-->
+          <p class="w3-large w3-xlarge"><b>Daily Status</b></p>
+          <p><i class="fa fa-book fa-fw w3-margin-right w3-text-teal"></i>Studying</p>
+          <div id="studyBar" class="w3-light-grey w3-round-xxlarge">
+            <div class="w3-round-xlarge w3-teal w3-center" style="width:0%">0%</div>
           </div>
-          <p>Fitness</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <!--<div class="w3-container w3-center w3-round-xlarge w3-teal"></div>-->
-            <div class="w3-center w3-text-white">0%</div>
+          <p><i class="fas fa-dumbbell fa-fw w3-margin-right w3-text-teal"></i>Fitness</p>
+          <div id="fitnessBar" class="w3-light-grey w3-round-xxlarge">
+            <div class="w3-round-xlarge w3-teal w3-center" style="width:0%">0%</div>
           </div>
-          <p>Hobbies</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <!--<div class="w3-container w3-center w3-round-xlarge w3-teal"></div>-->
-            <div class="w3-center w3-text-white">0%</div>
+          <p><i class="fas fa-gamepad fa-fw w3-margin-right w3-text-teal"></i>Hobbies</p>
+          <div id="hobbyBar" class="w3-light-grey w3-round-xxlarge">
+            <div class="w3-round-xlarge w3-teal w3-center" style="width:0%">0%</div>
+          </div>
+          <p><i class="fa fa-bath fa-fw w3-margin-right w3-text-teal"></i>Other</p>
+          <div id="otherBar" class="w3-light-grey w3-round-xxlarge">
+            <div class="w3-round-xlarge w3-teal w3-center" style="width:0%">0%</div>
           </div>
           <br>
 
-          <!--Percentage bars under "Category"-->
+          <!--Percentage bars under "Total"-->
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Total</b></p>
-          <div class="w3-light-grey w3-round-xxlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+          <div id="totalBar" class="w3-light-grey w3-round-xxlarge">
+            <div class="w3-round-xlarge w3-teal w3-center" style="height:24px;width:0%">0%</div>
           </div>
           <br>
         </div>
@@ -84,9 +89,14 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <table id="table" class="w3-table w3-card-4 w3-bordered"></table>
 
         <script>
-          function removeRow(n){
-            n.parentElement.parentElement.parentElement.style.display = 'none'; //I changed it so it removes the input box too
-
+          function removeCompleted(n){
+            n.parentElement.parentElement.parentElement.style.display = 'none';
+            completedTask++;
+            drawPercentage();
+          }
+          function removeCancel(n){
+            n.parentElement.parentElement.parentElement.style.display = 'none';
+            drawPercentage();
           }
         </script>
 
@@ -95,47 +105,30 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <script>
 
         function addTask() {
+          taskNumber++;
+          drawPercentage();
+
           var table = document.getElementById("table");
-             
-              var row = table.insertRow();//Now it inserts at bottom of table
-              var cell = row.insertCell();
-          
-          /**cell.innerHTML = "<form method='post' action='data.php" +
-            "<label>What is your task?</label>" +
-            "<input class='w3-input w3-border' type='text' name='task'>" +
-            "<label>Is your task urgent?</label>" +
-            "<input type='radio' name='urgent' value='yes'>Yes" +
-            "<input type='radio' name='urgent' value='no'>No" +
-            "<button onclick=process() class='w3-button w3-teal w3-round-xxlarge'>Submit</button></form>";*/
+          var row = table.insertRow();
+          var cell = row.insertCell();
 
-          //var name = prompt("What is your goal?");
-
-          //if (name != null) {
-            var text = "<input class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
+          var text = "<input class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
             "<h5 class='w3-opacity w3-padding-4'><b>";
-            
-            /*var urgent = confirm("Press OK if the goal is urgent");
-            if (urgent)
-              text += "</b><span class='w3-tag w3-teal w3-round w3-margin-left w3-padding-4'>URGENT</span></h5>";
-
-            text += getCategory();
-
-            var description = prompt("Describe the goal a little more (optional)");
-            if (description != null) {
-              if (description.trim() !== "") 
-                text += "<div class='w3-container w3-padding-4'><p>" + description + "</p></div>";
-              */
-              text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Completed</span>";
-              text += "<span onclick=removeRow(this) class='w3-button w3-red w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Missed</span>";
-              
-              
-              
-            cell.innerHTML = text;
-            //}
-          //}
+          
+          text += "<span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Completed</span>";
+          text += "<span onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Missed</span>";
+           
+          cell.innerHTML = text;
         }
 
-        function getCategory(){
+        function drawPercentage()
+        {
+          var percent = Math.round(completedTask/taskNumber * 100);
+          var totalBar = document.getElementById("totalBar");
+          totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + percent +"%'>" + percent + "%</div>";
+        }
+
+        /*function getCategory(){
           var category = prompt("Choose which category the goal falls under: studying, fitness, hobbies, or miscellaneous");
 
           if (category.toLowerCase() === "studying")
@@ -148,7 +141,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             return "<h6 class='w3-text-teal w3-padding-4'><i class='fas fa-bath fas-fw w3-margin-right'></i>Miscellaneous</h6>";
 
           getCategory();
-        }
+        }*/
 
       </script>
       
@@ -161,7 +154,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </div>
 
 <footer class="w3-container w3-teal w3-center w3-margin-top">
-  <p>Website created by ...</p>
+  <p>Website created by IvyHacks</p>
   <i class="fa fa-facebook-official w3-hover-opacity"></i>
   <i class="fa fa-instagram w3-hover-opacity"></i>
   <i class="fa fa-snapchat w3-hover-opacity"></i>

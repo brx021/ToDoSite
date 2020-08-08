@@ -41,6 +41,4 @@ new class Tasks{
     incomplete(){
         completed = new Boolean(false);
     }
-    
-
 }
