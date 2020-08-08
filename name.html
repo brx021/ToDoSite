@@ -81,38 +81,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       </div>
 
 
-        <table id="table" class="w3-table w3-card-4 w3-bordered">
-          <!--<tr>
-            <th>
-            <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-book fa-fw w3-margin-right"></i>Studying</h6>
-            <div class="w3-container">
-            <p>Description</p>
-            </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
-            </th>
-          </tr>
-          <tr>
-            <th>
-            <h5 class="w3-opacity"><b>Task 2</b></h5>
-            <h6 class="w3-text-teal"><i class="fas fa-dumbbell fas-fw w3-margin-right"></i>Fitness</h6>
-            <div class="w3-container">
-            <p>Description</p>
-            </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
-            </th>       
-          </tr>
-          <tr>
-            <th>
-            <h5 class="w3-opacity"><b>Task 3</b></h5>
-            <h6 class="w3-text-teal"><i class="fa fa-gamepad fa-fw w3-margin-right"></i>Hobbies</h6>
-            <div class="w3-container">
-            <p>Description</p>
-            </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
-            </th>
-          </tr>-->
-          </table>
+        <table id="table" class="w3-table w3-card-4 w3-bordered"></table>
 
         <script>
           function removeRow(row){
@@ -140,20 +109,20 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           var name = prompt("What is your goal?");
 
           if (name != null) {
-            var text = "<h5 class='w3-opacity'><b>" + name;
+            var text = "<h5 class='w3-opacity w3-padding-4'><b>" + name;
             
             var urgent = confirm("Press OK if the goal is urgent");
             if (urgent)
-              text += "</b><span class='w3-tag w3-teal w3-round w3-margin-left'>URGENT</span></h5>";
+              text += "</b><span class='w3-tag w3-teal w3-round w3-margin-left w3-padding-4'>URGENT</span></h5>";
 
             text += getCategory();
 
             var description = prompt("Describe the goal a little more (optional)");
             if (description != null) {
               if (description.trim() !== "") 
-                text += "<div class='w3-container'><p>" + description + "</p></div>";
+                text += "<div class='w3-container w3-padding-4'><p>" + description + "</p></div>";
 
-              text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge'>Mark Completed</span>";
+              text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge w3-padding-4'>Mark Completed</span>";
 
               var table = document.getElementById("table");
               var row = table.insertRow(0);
@@ -168,13 +137,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           var category = prompt("Choose which category the goal falls under: studying, fitness, hobbies, or miscellaneous");
 
           if (category.toLowerCase() === "studying")
-            return "<h6 class='w3-text-teal'><i class='fa fa-book fa-fw w3-margin-right'></i>Studying</h6>";
+            return "<h6 class='w3-text-teal w3-padding-4'><i class='fa fa-book fa-fw w3-margin-right'></i>Studying</h6>";
           else if (category.toLowerCase() === "fitness")
-            return "<h6 class='w3-text-teal'><i class='fas fa-dumbbell fas-fw w3-margin-right'></i>Fitness</h6>";
+            return "<h6 class='w3-text-teal w3-padding-4'><i class='fas fa-dumbbell fas-fw w3-margin-right'></i>Fitness</h6>";
           else if (category.toLowerCase() === "hobbies")
-            return "<h6 class='w3-text-teal'><i class='fa fa-gamepad fa-fw w3-margin-right'></i>Hobbies</h6>";
+            return "<h6 class='w3-text-teal w3-padding-4'><i class='fa fa-gamepad fa-fw w3-margin-right'></i>Hobbies</h6>";
           else if (category.toLowerCase() === "miscellaneous")
-            return "<h6 class='w3-text-teal'><i class='fas fa-bath fas-fw w3-margin-right'></i>Miscellaneous</h6>";
+            return "<h6 class='w3-text-teal w3-padding-4'><i class='fas fa-bath fas-fw w3-margin-right'></i>Miscellaneous</h6>";
 
           getCategory();
         }
