@@ -88,82 +88,84 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         
       </div>
       <!--TASKS LIST-->
-      <div id = "tasklist" class="w3-container w3-card w3-white w3-margin-bottom">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <div id = "tasklist">
+            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
 
 
-        <table id="table" class="w3-table w3-card-4 w3-bordered">
-          <!--<tr>
-            <th>
+            <table id="table" class="w3-table w3-card-4 w3-bordered">
+            <tr>
+                <th>
+                <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
+                <h6 class="w3-text-teal"><i class="fa fa-book fa-fw w3-margin-right"></i>Studying</h6>
+                <div class="w3-container">
+                <p>Description</p>
+                </div>
+                <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                <h5 class="w3-opacity"><b>Task 2</b></h5>
+                <h6 class="w3-text-teal"><i class="fas fa-dumbbell fas-fw w3-margin-right"></i>Fitness</h6>
+                <div class="w3-container">
+                <p>Description</p>
+                </div>
+                <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
+                </th>       
+            </tr>
+            <tr>
+                <th>
+                <h5 class="w3-opacity"><b>Task 3</b></h5>
+                <h6 class="w3-text-teal"><i class="fa fa-gamepad fa-fw w3-margin-right"></i>Hobbies</h6>
+                <div class="w3-container">
+                <p>Description</p>
+                </div>
+                <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
+                </th>
+            </tr>
+            </table>
+
+            <script>
+            function removeRow(row){
+                row.parentElement.style.display = 'none';
+            }
+            </script>
+
+            <!--<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
+            <hr>
+            <br>
+            <div class="w3-container">
             <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
             <h6 class="w3-text-teal"><i class="fa fa-book fa-fw w3-margin-right"></i>Studying</h6>
-            <div class="w3-container">
-            <p>Description</p>
+                <div class="w3-container">
+                <p>Description</p>
+                </div>
+            <p><button class="w3-button w3-black w3-round-xxlarge">Mark Completed</button></p>
+            <hr>
+            <br>
             </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
-            </th>
-          </tr>
-          <tr>
-            <th>
+            <div class="w3-container">
             <h5 class="w3-opacity"><b>Task 2</b></h5>
             <h6 class="w3-text-teal"><i class="fas fa-dumbbell fas-fw w3-margin-right"></i>Fitness</h6>
-            <div class="w3-container">
-            <p>Description</p>
+                <div class="w3-container">
+                <p>Description</p>
+                </div>
+            <p><button class="w3-button w3-black w3-round-xxlarge">Mark Completed</button></p>
+            <hr>
+            <br>
             </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
-            </th>       
-          </tr>
-          <tr>
-            <th>
+            <div class="w3-container">
             <h5 class="w3-opacity"><b>Task 3</b></h5>
             <h6 class="w3-text-teal"><i class="fa fa-gamepad fa-fw w3-margin-right"></i>Hobbies</h6>
-            <div class="w3-container">
-            <p>Description</p>
+                <div class="w3-container">
+                <p>Description</p>
+                </div>
+            <p><button class="w3-button w3-black w3-round-xxlarge">Mark Completed</button></p>
             </div>
-            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
-            </th>
-          </tr>-->
-          </table>
-
-        <script>
-          function removeRow(row){
-            row.parentElement.style.display = 'none';
-          }
-        </script>
-
-        <!--<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
-        <hr>
-        <br>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-book fa-fw w3-margin-right"></i>Studying</h6>
-            <div class="w3-container">
-            <p>Description</p>
-            </div>
-          <p><button class="w3-button w3-black w3-round-xxlarge">Mark Completed</button></p>
-          <hr>
-          <br>
+            <br>-->
         </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Task 2</b></h5>
-          <h6 class="w3-text-teal"><i class="fas fa-dumbbell fas-fw w3-margin-right"></i>Fitness</h6>
-            <div class="w3-container">
-            <p>Description</p>
-            </div>
-          <p><button class="w3-button w3-black w3-round-xxlarge">Mark Completed</button></p>
-          <hr>
-          <br>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Task 3</b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-gamepad fa-fw w3-margin-right"></i>Hobbies</h6>
-            <div class="w3-container">
-            <p>Description</p>
-            </div>
-          <p><button class="w3-button w3-black w3-round-xxlarge">Mark Completed</button></p>
-        </div>
-        <br>
-      </div>-->
+      </div>
 
       <p><button onclick="taskHelper()" class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge">+ Add Task</button></p>
       
