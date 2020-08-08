@@ -39,17 +39,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p class="w3-large w3-xlarge"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Daily Status</b></p>
           <p>Studying</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
-              <div class="w3-center w3-text-white">80%</div>
-            </div>
+            <!--<div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:0%">-->
+              <div class="w3-center w3-text-white">0%</div>
+            <!--</div>-->
           </div>
           <p>Fitness</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
+            <!--<div class="w3-container w3-center w3-round-xlarge w3-teal"></div>-->
+            <div class="w3-center w3-text-white">0%</div>
           </div>
           <p>Hobbies</p>
           <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+            <!--<div class="w3-container w3-center w3-round-xlarge w3-teal"></div>-->
+            <div class="w3-center w3-text-white">0%</div>
           </div>
           <br>
 
@@ -64,7 +66,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
       <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
         <p id = "clock"></p>
-      <script src="drawclock.js"></script>
+        <script src="drawclock.js"></script>
       </div>
 
     <!-- End Left Column -->
@@ -119,10 +121,22 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </script>
 
       <p><button onclick=addTask() class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge">+ Add Task</button></p>
-      
+
       <script>
 
         function addTask() {
+          var table = document.getElementById("table");
+          var row = table.insertRow(0);
+          var cell = row.insertCell(0);
+          
+          /**cell.innerHTML = "<form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" +
+            "<label>What is your task?</label>" +
+            "<input class='w3-input w3-border' type='text' name='task'>" +
+            "<label>Is your task urgent?</label>" +
+            "<input type='radio' name='urgent' value='yes'>Yes" +
+            "<input type='radio' name='urgent' value='no'>No" +
+            "<button onclick=process() class='w3-button w3-teal w3-round-xxlarge'>Submit</button></form>";*/
+
           var name = prompt("What is your goal?");
 
           if (name != null) {
@@ -132,32 +146,35 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             if (urgent)
               text += "</b><span class='w3-tag w3-teal w3-round w3-margin-left'>URGENT</span></h5>";
 
-            text += getCategory();            
+            text += getCategory();
 
-            var description = prompt("Describe the goal a little more");
-            text += "<div class='w3-container'><p>" + description + "</p></div>";
+            var description = prompt("Describe the goal a little more (optional)");
+            if (description != null) {
+              if (description.trim() !== "") 
+                text += "<div class='w3-container'><p>" + description + "</p></div>";
 
-            text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge'>Mark Completed</span>";
+              text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge'>Mark Completed</span>";
 
-            var table = document.getElementById("table");
-            var row = table.insertRow(0);
-            var cell = row.insertCell(0);
+              var table = document.getElementById("table");
+              var row = table.insertRow(0);
+              var cell = row.insertCell(0);
 
-            cell.innerHTML = text;
+              cell.innerHTML = text;
+            }
           }
         }
 
         function getCategory(){
-          var category = prompt("Choose which category the goal falls under: studying, exercise, hobbies, or miscellaneous");
+          var category = prompt("Choose which category the goal falls under: studying, fitness, hobbies, or miscellaneous");
 
           if (category.toLowerCase() === "studying")
             return "<h6 class='w3-text-teal'><i class='fa fa-book fa-fw w3-margin-right'></i>Studying</h6>";
-          else if (category.toLowerCase() === "exercise")
+          else if (category.toLowerCase() === "fitness")
             return "<h6 class='w3-text-teal'><i class='fas fa-dumbbell fas-fw w3-margin-right'></i>Fitness</h6>";
           else if (category.toLowerCase() === "hobbies")
             return "<h6 class='w3-text-teal'><i class='fa fa-gamepad fa-fw w3-margin-right'></i>Hobbies</h6>";
           else if (category.toLowerCase() === "miscellaneous")
-            return "<h6 class='w3-text-teal'><i class='local_hotel w3-margin-right'></i>Miscellaneous</h6>";
+            return "<h6 class='w3-text-teal'><i class='fas fa-bath fas-fw w3-margin-right'></i>Miscellaneous</h6>";
 
           getCategory();
         }

@@ -16,7 +16,9 @@ function cleanUp(i){
 
 function cleanUpHour(i)
 {
-    if (i < 10)
+    if (i == 0)
+        i = 12;
+    else if (i < 10)
         i = "0" + i;
     else if (i > 12)
     {
