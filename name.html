@@ -132,7 +132,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             "<button id='hobby' onclick=hobbyFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Hobby</button>" +           
             "<button id='other' onclick=otherFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Other</button>";
           
-          text += "<span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Completed</span>";
+          text += "<br><span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Completed</span>";
           text += "<span onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Missed</span>";
            
           cell.innerHTML = text;
@@ -223,28 +223,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           }
         }
 
-        /*function getCategory(){
-          var category = prompt("Choose which category the goal falls under: studying, fitness, hobbies, or miscellaneous");
-
-          if (category.toLowerCase() === "studying")
-            return "<h6 class='w3-text-teal w3-padding-4'><i class='fa fa-book fa-fw w3-margin-right'></i>Studying</h6>";
-          else if (category.toLowerCase() === "fitness")
-            return "<h6 class='w3-text-teal w3-padding-4'><i class='fas fa-dumbbell fas-fw w3-margin-right'></i>Fitness</h6>";
-          else if (category.toLowerCase() === "hobbies")
-            return "<h6 class='w3-text-teal w3-padding-4'><i class='fa fa-gamepad fa-fw w3-margin-right'></i>Hobbies</h6>";
-          else if (category.toLowerCase() === "miscellaneous")
-            return "<h6 class='w3-text-teal w3-padding-4'><i class='fas fa-bath fas-fw w3-margin-right'></i>Miscellaneous</h6>";
-
-          getCategory();
-        }*/
-
       </script>
-      
     </div>
-
   <!-- End Grid -->
   </div>
-  
   <!-- End Page Container -->
 </div>
 
