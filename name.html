@@ -15,10 +15,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <body class="w3-light-grey">
 
 <script>
-<<<<<<< HEAD
 
   
-=======
   var taskNumber = 0;
   var completedTask = 0;
 
@@ -33,7 +31,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
   var otherNumber = 0;
   var otherComplete = 0;
->>>>>>> 35d526cb87d1cd58e2b032a18daabdcbd1d0df7b
 </script>
   
 <!-- Page Container -->
@@ -123,16 +120,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <script>
 
         function addTask() {
-<<<<<<< HEAD
           name = "temporary"; // put form data here 
           var task = new Task(name);
           console.log(Task.COUNT);
           
           drawPercentage();
-=======
-          taskNumber++;
-          drawPercentage(0);
->>>>>>> 35d526cb87d1cd58e2b032a18daabdcbd1d0df7b
 
           var table = document.getElementById("table");
           var row = table.insertRow();
@@ -170,18 +162,15 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
         function drawPercentage(i)
         {
-<<<<<<< HEAD
           var percent = Math.round(Task.COMPLETED/Task.COUNT * 100);
           var total = document.getElementById('total');
           total.innerHTML = "<i  class='fa fa-globe fa-fw w3-margin-right w3-text-teal'></i>Total Completed/ " + Task.COUNT +" Task(s)";
-=======
           var studying = document.getElementById("studying");
           var fitness = document.getElementById("fitness");
           var hobby = document.getElementById("hobby");
           var other = document.getElementById("other");
 
-          var totalPercent = Math.round(completedTask/taskNumber * 100);
->>>>>>> 35d526cb87d1cd58e2b032a18daabdcbd1d0df7b
+          var totalPercent = Math.round(Task.COMPLETED/Task.COUNT * 100);
           var totalBar = document.getElementById("totalBar");
           totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + totalPercent +"%'>" + totalPercent + "%</div>";
 
