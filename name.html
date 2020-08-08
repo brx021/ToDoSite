@@ -6,8 +6,11 @@
 <link rel="stylesheet" href="name.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--SCRIPTS-->
 <script src="https://kit.fontawesome.com/8eb52c661f.js" crossorigin="anonymous"></script>
-
+<script src="drawclock.js"></script>
+<script src="printdate.js"></script>
+<script src="addTask.js"></script>
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
@@ -29,7 +32,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   
             <!--Header under logo-->
           <div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>Your To Do List</h2>
+            <h2>Your Task Manager</h2>
 
           </div>
         </div>
@@ -68,10 +71,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <br>
         </div>
       </div><br>
-
+      <!--CLOCK-->
       <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
         <p id = "clock"></p>
-      <script src="drawclock.js"></script>
+      
       </div>
 
     <!-- End Left Column -->
@@ -82,10 +85,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     
       <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xlarge">
         <p id = "date"></p>
-        <script src="printdate.js"></script>
+        
       </div>
-
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
+      <!--TASKS LIST-->
+      <div id = "tasklist" class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
@@ -117,8 +120,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
         <br>
       </div>
-
-      <p><button class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge">+ Add Task</button></p>
+      <!--ADD TASK BUTTON -->
+      <p><button id = "addTask" class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge" onclick = "taskHelper()">+ Add Task</button></p>
 
       <!--  Right Column
         <div class="w3-container w3-card w3-white">
