@@ -3,16 +3,17 @@ function taskHelper(){
     var div = document.createElement("div");
     div.className = "w3-container";
     document.getElementById("tasklist").appendChild(div);
-    div.id = "div"
+    div.id = "div";
 
-    addElements("h5", "div", "w3-opacity"); 
-    addElements("b", "h5", 0);
+    addElements("h5", "div", ""); 
+    addElements("h5", "h5", "");
+    addElements("h5", "h5", "");
     document.getElementById("b").innerHTML = "hi";
     
 }
-function addElements(type, prevID, classname){ //classname = 0 -> no class
+function addElements(type, prevID, classname){ 
     var el = document.createElement(type);
-    if (classname != 0){el.className = classname; }
+    el.className = classname;
     var prev = document.getElementById(prevID);
     prev.appendChild(el);
     el.id = toString(type); //Id = "type"
