@@ -1,9 +1,9 @@
-new class Tasks{
+class Task{
     static ALLTASKS = [];
     static COUNT = 0;
     static CATEGORIES = [];
     name; 
-    completed;//undefined = inprogress, 
+    completed;//undefined = in progress, 
     date; 
     time;
     category;
@@ -11,8 +11,8 @@ new class Tasks{
 
     constructor(name) {
         this.name = name;
-        COUNT += 1;
-        ALLTASKS.push(this);
+        Task.COUNT += 1; 
+        Task.ALLTASKS.push(this);
     }
     setName(name){//for editing name
         this.name = name;
@@ -42,3 +42,5 @@ new class Tasks{
         completed = new Boolean(false);
     }
 }
+var a = new Task("abc");
+console.log(a.name);
