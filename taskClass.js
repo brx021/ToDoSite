@@ -2,6 +2,8 @@ class Task{
     static ALLTASKS = [];
     static COUNT = 0;
     static CATEGORIES = [];
+    static COMPLETED = 0;
+    static MISSED = 0; 
     name; 
     completed;//undefined = in progress, 
     date; 
@@ -11,7 +13,7 @@ class Task{
 
     constructor(name) {
         this.name = name;
-        Task.COUNT += 1; 
+        Task.COUNT ++;
         Task.ALLTASKS.push(this);
     }
     setName(name){//for editing name
@@ -33,14 +35,19 @@ class Task{
         this.description = descr;
     }
     deleteOne(){
-        COUNT -= 1;
+        Task.COUNT --;
     }
     complete(){
-        completed = new Boolean(true);
+        this.completed = new Boolean(true);
+        Task.COMPLETED ++;
     }
     incomplete(){
-        completed = new Boolean(false);
+        this.completed = new Boolean(false);
+        Task.MISSED ++;
     }
 }
-var a = new Task("abc");
-console.log(a.name);
+//test
+/*var a = new Task("abc");
+a.setName("123");
+a.complete();
+console.log(a.name + a.completed);*/
