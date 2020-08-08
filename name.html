@@ -84,8 +84,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <table id="table" class="w3-table w3-card-4 w3-bordered"></table>
 
         <script>
-          function removeRow(row){
-            row.parentElement.parentElement.parentElement.parentElement.style.display = 'none'; //I changed it so it removes the input box too
+          function removeRow(n){
+            n.parentElement.parentElement.parentElement.style.display = 'none'; //I changed it so it removes the input box too
 
           }
         </script>
@@ -96,8 +96,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
         function addTask() {
           var table = document.getElementById("table");
-          var row = table.insertRow();
-          var cell = row.insertCell();
+             
+              var row = table.insertRow();//Now it inserts at bottom of table
+              var cell = row.insertCell();
           
           /**cell.innerHTML = "<form method='post' action='data.php" +
             "<label>What is your task?</label>" +
@@ -110,7 +111,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           //var name = prompt("What is your goal?");
 
           //if (name != null) {
-            var text = "<input class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey' placeholder='Type Here' style='width:30%'>" +
+            var text = "<input class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
             "<h5 class='w3-opacity w3-padding-4'><b>";
             
             /*var urgent = confirm("Press OK if the goal is urgent");
@@ -124,13 +125,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
               if (description.trim() !== "") 
                 text += "<div class='w3-container w3-padding-4'><p>" + description + "</p></div>";
               */
-              text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge w3-padding-4'>Mark Completed</span>";
-              text += "<span onclick=removeRow(this) class='w3-button w3-red w3-round-xxlarge w3-padding-4'>Mark Missed</span>";
+              text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Completed</span>";
+              text += "<span onclick=removeRow(this) class='w3-button w3-red w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Missed</span>";
               
-              var table = document.getElementById("table");
-             
-              var row = table.insertRow();//Now it inserts at bottom of table
-              var cell = row.insertCell();
+              
               
             cell.innerHTML = text;
             //}
