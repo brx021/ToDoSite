@@ -99,7 +99,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           var row = table.insertRow();
           var cell = row.insertCell();
           
-          /**cell.innerHTML = "<form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" +
+          /**cell.innerHTML = "<form method='post' action='data.php" +
             "<label>What is your task?</label>" +
             "<input class='w3-input w3-border' type='text' name='task'>" +
             "<label>Is your task urgent?</label>" +
@@ -110,7 +110,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           //var name = prompt("What is your goal?");
 
           //if (name != null) {
-            var text = "<input class=' w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey' placeholder='Type Here' style='width:30%'><h5 class='w3-opacity w3-padding-4'><b>";
+            var text = "<input class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey' placeholder='Type Here' style='width:30%'>" +
+            "<h5 class='w3-opacity w3-padding-4'><b>";
             
             /*var urgent = confirm("Press OK if the goal is urgent");
             if (urgent)
