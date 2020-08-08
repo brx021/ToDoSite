@@ -87,9 +87,48 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <p id = "date"></p>
         
       </div>
+<<<<<<< HEAD
       <!--TASKS LIST-->
       <div id = "tasklist" class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
+=======
+
+
+        <ul class="w3-ul w3-card-4" style="width:100%">
+          <li>
+            <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-book fa-fw w3-margin-right"></i>Studying</h6>
+            <div class="w3-container">
+            <p>Description</p>
+            </div>
+            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>
+          </li>
+          <li>
+            <h5 class="w3-opacity"><b>Task 2</b></h5>
+            <h6 class="w3-text-teal"><i class="fas fa-dumbbell fas-fw w3-margin-right"></i>Fitness</h6>
+            <div class="w3-container">
+            <p>Description</p>
+            </div>
+            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>          </li>
+          <li>
+            <h5 class="w3-opacity"><b>Task 3</b></h5>
+            <h6 class="w3-text-teal"><i class="fa fa-gamepad fa-fw w3-margin-right"></i>Hobbies</h6>
+            <div class="w3-container">
+            <p>Description</p>
+            </div>
+            <span onclick=removeRow(this) class="w3-button w3-black w3-round-xxlarge">Mark Completed</span>          </li>
+        </ul>
+
+        <script>
+          function removeRow(row){
+            row.parentElement.style.display = 'none';
+          }
+        </script>
+
+        <!--<h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>TASKS</h2>
+        <hr>
+        <br>
+>>>>>>> ed4c3abc6d024bce360cf2b4b29b606023720253
         <div class="w3-container">
           <h5 class="w3-opacity"><b>Task 1</b><span class="w3-tag w3-teal w3-round w3-margin-left">URGENT</span></h5>
           <h6 class="w3-text-teal"><i class="fa fa-book fa-fw w3-margin-right"></i>Studying</h6>
@@ -119,9 +158,27 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           <p><button class="w3-button w3-black w3-round-xxlarge">Mark Completed</button></p>
         </div>
         <br>
+<<<<<<< HEAD
       </div>
       <!--ADD TASK BUTTON -->
       <p><button id = "addTask" class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge" onclick = "taskHelper()">+ Add Task</button></p>
+=======
+      </div>-->
+
+      <p><button onclick=addTask() class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge">+ Add Task</button></p>
+      
+      <script>
+
+        function addTask() {
+          var canvas = document.createElement("canvas");
+          var text = document.createAttribute("")
+          //var parent = document.getElementById("parent");
+
+          document.body.appendChild(btn);
+        }
+      </script>
+      
+>>>>>>> ed4c3abc6d024bce360cf2b4b29b606023720253
 
       <!--  Right Column
         <div class="w3-container w3-card w3-white">
