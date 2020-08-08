@@ -164,16 +164,42 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <script>
 
         function addTask() {
+          var name = prompt("What is your goal?");
+          var text = "<h5 class='w3-opacity'><b>" + name;
+          
+          var urgent = confirm("Press OK if the goal is urgent");
+          if (urgent)
+            text += "</b><span class='w3-tag w3-teal w3-round w3-margin-left'>URGENT</span></h5>";
+
+          text += getCategory();            
+
+          var description = prompt("Describe the goal a little more");
+          text += "<div class='w3-container'><p>" + description + "</p></div>";
+
+          text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge'>Mark Completed</span>";
+
           var table = document.getElementById("table");
           var row = table.insertRow(0);
           var cell = row.insertCell(0);
 
-          cell.innerHTML = 
-          "<h5 class='w3-opacity'><b>Task 1</b><span class='w3-tag w3-teal w3-round w3-margin-left'>URGENT</span></h5>" +
-            "<h6 class='w3-text-teal'><i class='fa fa-book fa-fw w3-margin-right'></i>Studying</h6>" +
-            "<div class='w3-container'><p>Description</p></div>" +
-            "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge'>Mark Completed</span>";
+          cell.innerHTML = text;
         }
+
+        function getCategory(){
+          var category = prompt("Choose which category the goal falls under: studying, exercise, hobbies, or miscellaneous");
+
+          if (category.toLowerCase() === "studying")
+            return "<h6 class='w3-text-teal'><i class='fa fa-book fa-fw w3-margin-right'></i>Studying</h6>";
+          else if (category.toLowerCase() === "exercise")
+            return "<h6 class='w3-text-teal'><i class='fas fa-dumbbell fas-fw w3-margin-right'></i>Fitness</h6>";
+          else if (category.toLowerCase() === "hobbies")
+            return "<h6 class='w3-text-teal'><i class='fa fa-gamepad fa-fw w3-margin-right'></i>Hobbies</h6>";
+          else if (category.toLowerCase() === "miscellaneous")
+            return "<h6 class='w3-text-teal'><i class='local_hotel w3-margin-right'></i>Miscellaneous</h6>";
+
+          getCategory();
+        }
+
       </script>
       
 
