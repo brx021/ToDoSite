@@ -85,7 +85,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
         <script>
           function removeRow(row){
-            row.parentElement.style.display = 'none';
+            row.parentElement.parentElement.parentElement.parentElement.style.display = 'none'; //I changed it so it removes the input box too
+
           }
         </script>
 
@@ -95,8 +96,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
         function addTask() {
           var table = document.getElementById("table");
-          var row = table.insertRow(0);
-          var cell = row.insertCell(0);
+          var row = table.insertRow();
+          var cell = row.insertCell();
           
           /**cell.innerHTML = "<form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" +
             "<label>What is your task?</label>" +
@@ -106,12 +107,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             "<input type='radio' name='urgent' value='no'>No" +
             "<button onclick=process() class='w3-button w3-teal w3-round-xxlarge'>Submit</button></form>";*/
 
-          var name = prompt("What is your goal?");
+          //var name = prompt("What is your goal?");
 
-          if (name != null) {
-            var text = "<h5 class='w3-opacity w3-padding-4'><b>" + name;
+          //if (name != null) {
+            var text = "<input class=' w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey' placeholder='Type Here' style='width:30%'><h5 class='w3-opacity w3-padding-4'><b>";
             
-            var urgent = confirm("Press OK if the goal is urgent");
+            /*var urgent = confirm("Press OK if the goal is urgent");
             if (urgent)
               text += "</b><span class='w3-tag w3-teal w3-round w3-margin-left w3-padding-4'>URGENT</span></h5>";
 
@@ -121,16 +122,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             if (description != null) {
               if (description.trim() !== "") 
                 text += "<div class='w3-container w3-padding-4'><p>" + description + "</p></div>";
-
+              */
               text += "<span onclick=removeRow(this) class='w3-button w3-black w3-round-xxlarge w3-padding-4'>Mark Completed</span>";
-
+              text += "<span onclick=removeRow(this) class='w3-button w3-red w3-round-xxlarge w3-padding-4'>Mark Missed</span>";
+              
               var table = document.getElementById("table");
-              var row = table.insertRow(0);
-              var cell = row.insertCell(0);
-
-              cell.innerHTML = text;
-            }
-          }
+             
+              var row = table.insertRow();//Now it inserts at bottom of table
+              var cell = row.insertCell();
+              
+            cell.innerHTML = text;
+            //}
+          //}
         }
 
         function getCategory(){
