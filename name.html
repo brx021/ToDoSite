@@ -104,6 +104,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           function removeCompleted(n){
             n.parentElement.parentElement.parentElement.style.display = 'none';
             completedTask++;
+
             drawPercentage();
           }
           function removeCancel(n){
@@ -124,7 +125,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           var row = table.insertRow();
           var cell = row.insertCell();
 
-          var text = "<input class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
+          var text = "<input id='parent' class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
             "<h5 class='w3-opacity w3-padding-4'><b>";
 
           text += "<button id='studying' onclick=studyFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Studying</button>" +
@@ -132,8 +133,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             "<button id='hobby' onclick=hobbyFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Hobby</button>" +           
             "<button id='other' onclick=otherFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Other</button>";
           
-          text += "<br><span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Completed</span>";
-          text += "<span onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Missed</span>";
+          text += "<br><span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right w3-medium'>Mark Completed</span>";
+          text += "<span onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-top w3-margin-right w3-medium'>Mark Missed</span>";
            
           cell.innerHTML = text;
         }
@@ -195,7 +196,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             hobby.remove();
             other.remove();
 
-            studying.id = "different"; 
+            studying.id = "diffStudy"; 
           }
           else if (i == 2)
           {
@@ -203,7 +204,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             hobby.remove();
             other.remove();
 
-            fitness.id = "different"; 
+            fitness.id = "diffFitness"; 
           }
           else if (i == 3)
           {
@@ -211,7 +212,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             studying.remove();
             other.remove();
 
-            hobby.id = "different";
+            hobby.id = "diffHobby";            
           }
           else if (i == 4)
           {
@@ -219,7 +220,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             hobby.remove();
             studying.remove();
 
-            other.id = "different";
+            other.id = "diffOther";
           }
         }
 
