@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>New Name</title>
+<title>To Do</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="name.css">
@@ -17,6 +17,18 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <script>
   var taskNumber = 0;
   var completedTask = 0;
+
+  var studyNumber = 0;
+  var studyComplete = 0;
+
+  var fitnessNumber = 0;
+  var fitnessComplete = 0;
+
+  var hobbyNumber = 0;
+  var hobbyComplete = 0;
+
+  var otherNumber = 0;
+  var otherComplete = 0;
 </script>
   
 <!-- Page Container -->
@@ -106,7 +118,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
         function addTask() {
           taskNumber++;
-          drawPercentage();
+          drawPercentage(0);
 
           var table = document.getElementById("table");
           var row = table.insertRow();
@@ -114,6 +126,11 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 
           var text = "<input class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
             "<h5 class='w3-opacity w3-padding-4'><b>";
+
+          text += "<button id='studying' onclick=studyFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Studying</button>" +
+            "<button id='fitness' onclick=fitnessFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Fitness</button>" +            
+            "<button id='hobby' onclick=hobbyFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Hobby</button>" +           
+            "<button id='other' onclick=otherFunction() class='w3-button w3-teal w3-round-large w3-margin-top w3-margin-right'>Other</button>";
           
           text += "<span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Completed</span>";
           text += "<span onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-top w3-margin-right'>Mark Missed</span>";
@@ -121,11 +138,89 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           cell.innerHTML = text;
         }
 
-        function drawPercentage()
+        function studyFunction(){
+          studyNumber++; drawPercentage(1);
+        }
+
+        function fitnessFunction(){
+          fitnessNumber++; drawPercentage(2);
+        }
+
+        function hobbyFunction(){
+          hobbyNumber++; drawPercentage(3);
+        }
+
+        function otherFunction(){
+          otherNumber++; drawPercentage(4);
+        }
+
+        function drawPercentage(i)
         {
-          var percent = Math.round(completedTask/taskNumber * 100);
+          var studying = document.getElementById("studying");
+          var fitness = document.getElementById("fitness");
+          var hobby = document.getElementById("hobby");
+          var other = document.getElementById("other");
+
+          var totalPercent = Math.round(completedTask/taskNumber * 100);
           var totalBar = document.getElementById("totalBar");
-          totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + percent +"%'>" + percent + "%</div>";
+          totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + totalPercent +"%'>" + totalPercent + "%</div>";
+
+          if (studyNumber != 0) {
+            var studyPercent = Math.round(studyComplete/studyNumber * 100);
+            var studyBar = document.getElementById("studyBar");
+            studyBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='width:" + studyPercent + "%'>" + studyPercent + "%</div>";
+          }
+
+          if (fitnessNumber != 0) {
+            var fitnessPercent = Math.round(fitnessComplete/fitnessNumber * 100);
+            var fitnessBar = document.getElementById("fitnessBar");
+            fitnessBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='width:" + fitnessPercent + "%'>" + fitnessPercent + "%</div>";
+          }
+          
+          if (hobbyNumber != 0) {
+            var hobbyPercent = Math.round(hobbyComplete/hobbyNumber * 100);
+            var hobbyBar = document.getElementById("hobbyBar");
+            hobbyBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='width:" + hobbyPercent + "%'>" + hobbyPercent + "%</div>";
+          }
+
+          if (otherNumber != 0) {
+            var otherPercent = Math.round(otherComplete/otherNumber * 100);
+            var otherBar = document.getElementById("otherBar");
+            otherBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='width:" + otherPercent + "%'>" + otherPercent + "%</div>";
+          }
+
+          if (i == 1)
+          {
+            fitness.remove();
+            hobby.remove();
+            other.remove();
+
+            studying.id = "different"; 
+          }
+          else if (i == 2)
+          {
+            studying.remove();
+            hobby.remove();
+            other.remove();
+
+            fitness.id = "different"; 
+          }
+          else if (i == 3)
+          {
+            fitness.remove();
+            studying.remove();
+            other.remove();
+
+            hobby.id = "different";
+          }
+          else if (i == 4)
+          {
+            fitness.remove();
+            hobby.remove();
+            studying.remove();
+
+            other.id = "different";
+          }
         }
 
         /*function getCategory(){
