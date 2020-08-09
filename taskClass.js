@@ -1,9 +1,11 @@
 class Task{
     static ALLTASKS = [];
+    static POINTS = 0;
     static COUNT = 0;
     static CATEGORIES = [];
     static COMPLETED = 0;
     static MISSED = 0; 
+    
     name; 
     completed;//undefined = in progress, 
     date; 
