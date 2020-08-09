@@ -6,9 +6,15 @@
 <link rel="stylesheet" href="name.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="Brandon.css">
 <script src="https://kit.fontawesome.com/8eb52c661f.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src ="taskClass.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript" src ="taskActions.js"></script>
+<script type="text/javascript" src ="rewardActions.js"></script>
+<script type="text/javascript" src ="modal.js"></script>
+<script src="drawclock.js"></script>
+<script src="printdate.js"></script>
 
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
@@ -98,46 +104,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       </div>
     </div>
 
-      <script>
-      document.getElementsByClassName("tablink")[0].click();
-
-      function openTree(evt, treeName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("tree");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-          tablinks[i].classList.remove("w3-light-grey");
-        }
-        document.getElementById(treeName).style.display = "block";
-        evt.currentTarget.classList.add("w3-light-grey");
-      }
-
-      function updateReward(){
-        if (Task.ALLTIME >= 10 && Task.ALLTIME < 30){
-          var unlock = document.getElementById("sakuraBtn");
-          unlock.disabled = false;
-        }
-        else if (Task.ALLTIME >= 30 && Task.ALLTIME < 100){
-          var unlock = document.getElementById("eucalyptusBtn");
-          unlock.disabled = false;
-        }
-        else if (Task.ALLTIME >= 100 && Task.ALLTIME < 200){
-          var unlock = document.getElementById("bambooBtn");
-          unlock.disabled = false;
-        }
-        else if (Task.ALLTIME >= 200 && Task.ALLTIME < 500){
-          var unlock = document.getElementById("wisteriaBtn");
-          unlock.disabled = false;
-        }
-      }
-      </script>
 
     <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
       <p id = "clock"></p>
-      <script src="drawclock.js"></script>
+      
     </div>
 
     <!-- End Left Column -->
@@ -148,134 +118,20 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
     
       <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xlarge">
         <p id = "date"></p>
-        <script src="printdate.js"></script>
+        
       </div>
 
 
         <table id="table" class="w3-table w3-card-4 w3-bordered"></table>
 
-        <script>
-          function removeCompleted(n){
-            n.parentElement.parentElement.parentElement.style.display = 'none';
-            Task.COMPLETED ++;
-            Task.ALLTIME ++;
-            drawPercentage();
-            updateReward();
-          }
-          function removeCancel(n){
-            n.parentElement.parentElement.parentElement.style.display = 'none';
-            Task.MISSED ++;
-            drawPercentage();
 
-            modal.style.display = "block";
-          }
-        </script>
 
       <p><button onclick=addTask() class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge">+ Add Task</button></p>
 
-      <script>
-
-        function addTask() {
-          name = "temporary"; // put form data here 
-          var task = new Task(name);
-          console.log(Task.COUNT);
-          
-          drawPercentage();
-
-          var table = document.getElementById("table");
-          var row = table.insertRow();
-          var cell = row.insertCell();
-
-          var text = "<input id='parent' class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
-            "<h5 class='w3-opacity w3-padding-4'><b>";
-
-          text += "<br><span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-right w3-medium'>Mark Completed</span>";
-          text += "<span id='cancel' onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-right w3-medium'>Mark Missed</span>";
-           
-          cell.innerHTML = text;
-        }
-
-        function drawPercentage()
-        {
-          var total = document.getElementById('total');
-          total.innerHTML = "<i class='fa fa-globe fa-fw w3-margin-right w3-text-teal'></i>Total Completed: " + Task.COMPLETED + " Task(s)";
-
-          var totalPercent = Math.round(Task.COMPLETED/Task.COUNT * 100);
-          var totalBar = document.getElementById("totalBar");
-          totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + totalPercent + "%'>" + totalPercent + "%</div>";
-        }
-
-      </script>
+     
     </div>
 
-    <style>
-      body {font-family: Arial, Helvetica, sans-serif;}
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-      }
-      
-      .modal-content {
-        position: relative;
-        background-color: #fefefe;
-        margin: auto;
-        padding: 0;
-        border: 1px solid #888;
-        width: 80%;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s
-      }
-      
-      @-webkit-keyframes animatetop {
-        from {top:-300px; opacity:0} 
-        to {top:0; opacity:1}
-      }
-      
-      @keyframes animatetop {
-        from {top:-300px; opacity:0}
-        to {top:0; opacity:1}
-      }
-      
-      .close {
-        color: white;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-      
-      .close:hover,
-      .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      
-      .modal-header {
-        padding: 2px 16px;
-        background-color: teal;
-        color: white;
-      }
-      
-      .modal-body {padding: 2px 16px;}
-      
-      .modal-footer {
-        padding: 2px 16px;
-        background-color: teal;
-        color: white;
-      }
-      </style>
+
       
       <div id="myPopup" class="modal">
       
@@ -285,7 +141,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
             <h2>Reflection Time!</h2>
           </div>
           <div class="modal-body">
-            <p>Why did you stop with this goal?</p>
+            <p>Why did you miss this goal?</p>
             <input id='reflection' class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-white w3-margin-top' placeholder='Type Here' style='width:30%'>
               <h5 class='w3-opacity w3-padding-4'><b>
           </div>
@@ -295,22 +151,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       
       </div>
       
-      <script>
-      
-      var modal = document.getElementById("myPopup");
-      var span = document.getElementsByClassName("close")[0];
-
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-      
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-
-    </script>
+   
   <!-- End Grid -->
   </div>
   <!-- End Page Container -->
