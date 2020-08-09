@@ -140,9 +140,9 @@
       </div><br>
     
       <!--Button to open up rewards-->
-      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button><br>
+      <button onclick="showElement('rewards')" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button><br>
 
-      <button onclick="document.getElementById('historyModal').style.display='block'" class="w3-button w3-blue w3-round-xlarge w3-block w3-xlarge">View your task history</button>
+      <button onclick="showElement('historyModal'); " class="w3-button w3-blue w3-round-xlarge w3-block w3-xlarge">View your task history</button>
 
       <!--Modal class-->
       <div id="rewards" class="w3-modal">
@@ -232,7 +232,7 @@
             <h2>Your history</h2>
           </header>
             <div class="modal-body">
-              <table id="history" class="w3-table w3-bordered">
+              <table id="missed-table" class="w3-table w3-bordered">
                 <tr>
                   <th>
                     <h3>Task Name : Complete</h3>
@@ -286,7 +286,9 @@
 
     <!--Script component of this HTML file-->
     <script>
-
+      function showElement(elID){
+        document.getElementById(elID).style.display="block";
+      }
       document.getElementsByClassName("tablink")[0].click();
 
       /** Moves the images and text to the correct tabs in the rewards modal */
@@ -348,6 +350,7 @@
           modal.style.display = "none";
         }
       }
+      
 
     </script>
    

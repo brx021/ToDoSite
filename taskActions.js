@@ -4,7 +4,7 @@ var idNum = 0;
 /** Called when the add button is pressed, generates a new task cell and updates its id (index in task array) */
 function addTask() {
     idNum ++;  //id is always increasing, task.COUNT can decrease
-    task = new Task("");
+    task = new Task("No Name");
     var table = document.getElementById("table");
     var row = table.insertRow();
     var cell = row.insertCell();
@@ -17,7 +17,7 @@ function addTask() {
     elements += "<span id='delete' onclick=removeDelete(this) class='w3-button w3-red w3-round-xxlarge w3-margin-right w3-medium'>Delete</span>";
     
     cell.innerHTML = elements;
-    console.log("count:" + Task.COUNT, Task.ALLTASKS );
+    console.log("count:" + Task.COUNT, "ALLTASKS", Task.ALLTASKS );
     drawPercentage();
 }
 
@@ -30,7 +30,7 @@ function storeTask(id){
     name = `${document.getElementById(`${id}`).value}`; 
     task.setName(name);
     
-    console.log(Task.ALLTASKS);
+    console.log("UPDATE", Task.ALLTASKS);
 }
 
 /** Redraws the percentage bar based on tasks completed and total tasks created */
@@ -43,7 +43,7 @@ function drawPercentage(){
     totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + totalPercent + "%'>" + totalPercent + "%</div>";
 }
 
-/** Removes the task from the list, and updates the array of tasks completed */
+/** Removes the task from the display, and updates the array of tasks completed */
 function removeCompleted(n){
     taskElement = n.parentElement.parentElement.parentElement;
     taskId = taskElement.childNodes[0].id;
@@ -54,18 +54,19 @@ function removeCompleted(n){
     updateReward();
 }
 
-/** Removes the task from the list, but overall array of tasks is unchanged */
+/** Removes the task from the display, but overall array of tasks is unchanged */
 function removeCancel(n){
     taskElement = n.parentElement.parentElement.parentElement;
     taskId = taskElement.childNodes[0].id;
     curr = Task.ALLTASKS[taskId-1];
     curr.incomplete();
+    console.log(curr);
     taskElement.style.display = 'none'; 
-    
     createBlankRef(curr);//blank reflection, gets updated when they press enter
     modal.style.display = "block"; //open reflection modal
+    addMissedToDisplay();
     drawPercentage();//I don't think we need this but whatever
-    console.log(Task.MISSED);
+    console.log("Missed tasks:" , Task.MISSED);  
 }
 
 /** Removes the task from the list, and also the overall array of tasks */
@@ -75,8 +76,8 @@ function removeDelete(n){
     Task.COUNT --;
     taskId = taskElement.childNodes[0].id;
     Task.ALLTASKS[taskId-1] = null;
-    console.log(Task.ALLTASKS);
     drawPercentage();
+    
 }
 
 function createBlankRef(currTask){
@@ -84,8 +85,14 @@ function createBlankRef(currTask){
 }
 
 function checkRefForm(e){
-    if(e && e.keyCode == 13){
-        
+    if(e && e.keyCode == 13){ //when enter key is pressed in the modal
+        ref = `${document.getElementById("reflection").value}`
+        curr = Task.MISSED[(Task.MISSED.length)-1]; //last task in missed
+        curr.setReflection(ref);
+        document.getElementById("reflection").value = "";//reset the form
+        console.log("Missed tasks UPDATE: ", Task.MISSED);
+        updateMissedDisplay();
+        modal.style.display = "none"; //close modal
     }
 }       
 
@@ -117,4 +124,28 @@ function changePfp(name) {
     else if (name === "stlucia") {
         profile.innerHTML = "<img src='images/stlucia.jpg' alt='Avatar' class='w3-image'></img>";
     }
+}
+
+function addMissedToDisplay(){
+    var cur = Task.MISSED[(Task.MISSED.length)-1];
+    var table = document.getElementById("missed-table");
+    var row = table.insertRow();
+    var cell = row.insertCell();
+    console.log(cur);
+    var elements = `
+        <h3>${cur.name}</h3>
+        <h5>${cur.reflection}</h5>
+    `;
+    cell.innerHTML = elements;
+    
+}
+function updateMissedDisplay(){
+    var cur = Task.MISSED[(Task.MISSED.length)-1];
+    var table = document.getElementById("missed-table");
+    var lastRow = table.rows[ table.rows.length - 1 ];
+    var lastCell = lastRow.lastChild;
+    lastCell.innerHTML = `
+        <h3>Task: ${cur.name}</h3>
+        <h5>Reflection: ${cur.reflection}</h5>
+    `
 }
