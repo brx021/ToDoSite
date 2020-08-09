@@ -1,6 +1,6 @@
-task;
+var task;
 function addTask() {
-    idNum = Task.COUNT +1;
+    idNum = Task.COUNT +1;//so the newest id can be the same as the count
     task = new Task("");
     var table = document.getElementById("table");
     var row = table.insertRow();
@@ -14,7 +14,8 @@ function addTask() {
     elements += "<span id='cancel' onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-right w3-medium'>Mark Missed</span>";
     
     cell.innerHTML = elements;
-    
+    console.log(Task.COUNT);
+    drawPercentage();
 }
 function checkSubmit(e) {
     if(e && e.keyCode == 13) {
@@ -29,7 +30,7 @@ function storeTask(id){
     task.setName(name);
     
     console.log(Task.ALLTASKS);
-    drawPercentage();
+    
 }
 
 
@@ -37,7 +38,7 @@ function storeTask(id){
 
 function drawPercentage(){
     var total = document.getElementById('total');
-    total.innerHTML = "<i class='fa fa-globe fa-fw w3-margin-right w3-text-teal'></i>Total Completed: " + Task.COMPLETED + " Task(s)";
+    total.innerHTML = "<i class='fa fa-globe fa-fw w3-margin-right w3-text-teal'></i>Total Completed: " + Task.COMPLETED + " out of "+ Task.COUNT + " Task(s)" ;
 
     var totalPercent = Math.round(Task.COMPLETED/Task.COUNT * 100);
     var totalBar = document.getElementById("totalBar");
@@ -45,7 +46,10 @@ function drawPercentage(){
 }
 
 function removeCompleted(n){
-    n.parentElement.parentElement.parentElement.style.display = 'none';
+    taskElement = n.parentElement.parentElement.parentElement;
+    taskElement.style.display = 'none';
+    taskId = taskElement.childNodes[0].id;
+    curr = Task.ALLTASKS[taskId-1];
     Task.COMPLETED ++;
     Task.ALLTIME ++;
     drawPercentage();
@@ -53,7 +57,7 @@ function removeCompleted(n){
 }
   function removeCancel(n){
     n.parentElement.parentElement.parentElement.style.display = 'none';
-    Task.MISSED ++;
+    //Task.MISSED += current task
     drawPercentage();
     //Brandon you didn't define modal here idk how to refer it to the element it must have been accidentally deleted
     modal.style.display = "block";
