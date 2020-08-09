@@ -5,7 +5,7 @@ class Task{
     static CATEGORIES = [];
     static COMPLETED = 0;
     static MISSED = 0; 
-    
+    static ALLTIME = 0;
     name; 
     completed;//undefined = in progress, 
     date; 
@@ -42,6 +42,7 @@ class Task{
     complete(){
         this.completed = new Boolean(true);
         Task.COMPLETED ++;
+        Task.ALLTIME ++;
     }
     incomplete(){
         this.completed = new Boolean(false);

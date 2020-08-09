@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://kit.fontawesome.com/8eb52c661f.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src ="taskClass.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <style>
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
@@ -44,10 +46,99 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         </div>
       </div><br>
 
-      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
-        <p id = "clock"></p>
-        <script src="drawclock.js"></script>
+    <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore Your Forest</button>
+
+    <div id="rewards" class="w3-modal">
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('rewards').style.display='none'" 
+        class="w3-button w3-teal w3-xlarge w3-display-topright">&times;</span>
+        <h2>Your Forest</h2>
+        <h6>Unlock more trees as you complete more tasks</h6>
+        </header>
+
+        <div class="w3-bar w3-border-bottom">
+        <button class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Redwood')">Redwood</button>
+        <button id="sakuraBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Sakura')" disabled>Sakura</button>
+        <button id="eucalyptusBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Eucalyptus')" disabled>Rainbow Eucalyptus</button>
+        <button id="bambooBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Bamboo')" disabled>Bamboo</button>
+        <button id="wisteriaBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Wisteria')" disabled>Wisteria</button>
+        </div>
+
+        <div id="Redwood" class="w3-container tree">
+        <h1>Redwood Forest</h1>
+        <img src="redwood.jpg" class="w3-round" style="width:100%" alt="Redwood">
+        <p>Officially, the oldest living coast redwood is at least 2,200 years old, but foresters believe some coast redwoods may be much older.</p>
+        </div>
+
+        <div id="Sakura" class="w3-container tree">
+        <h1>Cherry Blossom Garden</h1>
+        <img src="sakura.jpg" class="w3-round" style="width:100%" alt="Sakura">
+        <p>More than just a symbol for spring, Japan's national flowers stand for renewal and hope.</p>
+        </div>
+
+        <div id="Eucalyptus" class="w3-container tree">
+        <h1>Rainbow Eucalyptus</h1>
+        <img src="eucalyptus.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+        <p>Normally an orange-brown color, the eucalyptus's smooth bark peels away in the summer to reveal green, red, and purple coloring.</p>
+        </div>
+
+        <div id="Bamboo" class="w3-container tree">
+        <h1>Bamboo Grove</h1>
+        <img src="bamboo.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+        <p>The fastest growing plant on the planet, bamboo can grow up to 3 feet in 24 hours.</p>
+        </div>
+
+        <div id="Wisteria" class="w3-container tree">
+        <h1>Hanging Wisteria</h1>
+        <img src="wisteria.jpg" class="w3-round" style="width:100%" alt="Wisteria">
+        <p>Wisteria isn't a tree, but rather a woody vine that twines around nearby trees, shrubs, and various manmade structures.</p>
+        </div>
+
       </div>
+    </div>
+
+      <script>
+      document.getElementsByClassName("tablink")[0].click();
+
+      function openTree(evt, treeName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("tree");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+          tablinks[i].classList.remove("w3-light-grey");
+        }
+        document.getElementById(treeName).style.display = "block";
+        evt.currentTarget.classList.add("w3-light-grey");
+      }
+
+      function updateReward(){
+        if (Task.ALLTIME >= 10 && Task.ALLTIME < 30){
+          var unlock = document.getElementById("sakuraBtn");
+          unlock.disabled = false;
+        }
+        else if (Task.ALLTIME >= 30 && Task.ALLTIME < 100){
+          var unlock = document.getElementById("eucalyptusBtn");
+          unlock.disabled = false;
+        }
+        else if (Task.ALLTIME >= 100 && Task.ALLTIME < 200){
+          var unlock = document.getElementById("bambooBtn");
+          unlock.disabled = false;
+        }
+        else if (Task.ALLTIME >= 200 && Task.ALLTIME < 500){
+          var unlock = document.getElementById("wisteriaBtn");
+          unlock.disabled = false;
+        }
+      }
+      </script>
+
+    <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
+      <p id = "clock"></p>
+      <script src="drawclock.js"></script>
+    </div>
 
     <!-- End Left Column -->
     </div>
@@ -67,7 +158,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           function removeCompleted(n){
             n.parentElement.parentElement.parentElement.style.display = 'none';
             Task.COMPLETED ++;
+            Task.ALLTIME ++;
             drawPercentage();
+            updateReward();
           }
           function removeCancel(n){
             n.parentElement.parentElement.parentElement.style.display = 'none';
@@ -216,7 +309,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           modal.style.display = "none";
         }
       }
-      
+
     </script>
   <!-- End Grid -->
   </div>
