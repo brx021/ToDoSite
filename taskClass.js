@@ -3,9 +3,9 @@ class Task{
     static POINTS = 0;
     static COUNT = 0;
     static CATEGORIES = [];
-    static COMPLETED = 0;
+    static COMPLETED = 0; //completed tasks for each day
     static MISSED = [];
-    static ALLTIME = 0;
+    static ALLTIME = 0; //all time completed tasks
     
     name; 
     completed;  //undefined = in progress, 
