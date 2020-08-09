@@ -12,7 +12,8 @@ class Task{
     date; 
     time;
     category;
-    description;
+    reflection;
+
 
     constructor(name) {
         this.name = name;
@@ -38,8 +39,8 @@ class Task{
         else{console.log('error')}
     }
 
-    setDescr(descr){
-        this.description = descr;
+    setReflection(ref){
+        this.reflection = ref;
     }
 
     deleteOne(){
@@ -47,13 +48,13 @@ class Task{
     }
 
     complete(){
-        this.completed = new Boolean(true);
+        this.completed = true;
         Task.COMPLETED ++;
         Task.ALLTIME ++;
     }
     
     incomplete(){
-        this.completed = new Boolean(false);
+        this.completed = false;
         Task.MISSED.push(this);
     }
 }
