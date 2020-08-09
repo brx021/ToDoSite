@@ -1,12 +1,12 @@
-var idNum = 0;
+task;
 function addTask() {
-    idNum ++;
-    Task.COUNT ++;
+    idNum = Task.COUNT +1;
+    task = new Task("");
     var table = document.getElementById("table");
     var row = table.insertRow();
     var cell = row.insertCell();
-
-    var elements = "<input onKeyPress='checkSubmit(event);' id= '"+toString(idNum)+ "'class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top' placeholder='Type Here' style='width:30%'>" +
+    console.log("idNum="+idNum);
+    var elements = `<input onKeyPress="checkSubmit(event);" id= "${idNum}" class="w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top" placeholder="Type Here" style="width:30%">` +
         "<h5 class='w3-opacity w3-padding-4'><b></input>";
      
 
@@ -22,12 +22,13 @@ function checkSubmit(e) {
         storeTask(idNum);
     }
 }
+
 function storeTask(id){
-    console.log(id);
-    name = toString(document.getElementById(toString(id)).value); 
-    console.log(name);
-    var task = new Task(name);
-    console.log("count" +Task.COUNT);
+    
+    name = `${document.getElementById(`${id}`).value}`; 
+    task.setName(name);
+    
+    console.log(Task.ALLTASKS);
     drawPercentage();
 }
 
@@ -52,7 +53,7 @@ function removeCompleted(n){
     Task.ALLTIME ++;
     drawPercentage();
     updateReward();
-  }
+}
   function removeCancel(n){
     n.parentElement.parentElement.parentElement.style.display = 'none';
     Task.MISSED ++;
@@ -60,5 +61,3 @@ function removeCompleted(n){
 
     modal.style.display = "block";
   }
-
-  
