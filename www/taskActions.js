@@ -9,9 +9,8 @@ function addTask() {
     var row = table.insertRow();
     var cell = row.insertCell();
     console.log("idNum="+idNum);
-    var elements = "<span class='w3-button w3-round-xxlarge w3-green'>Press Enter to Save</span>";
-    elements += `<input onKeyPress="checkSubmit(event);" id= "${idNum}" class="w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top" placeholder="Type Here" style="width:30%">` +
-        "<h5 class='w3-opacity w3-padding-4'><b></input>";
+    var elements = `<input onKeyPress="checkSubmit(event);" id= "${idNum}" class="w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top" placeholder="Type Here, Press Enter to Save" style="width:30%">` +
+        "<h5 class='w3-opacity w3-padding-4'><b></input> ";
     
     elements += "<br><span onclick=removeCompleted(this) class='w3-button w3-blue w3-round-xxlarge w3-margin-right w3-medium'>Mark Completed</span>";
     elements += "<span id='cancel' onclick=removeCancel(this) class='w3-button w3-black w3-round-xxlarge w3-margin-right w3-medium'>Mark Incomplete</span>";
