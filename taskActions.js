@@ -134,8 +134,8 @@ function addMissedToDisplay(){
     var cell = row.insertCell();
     console.log(cur);
     var elements = `
-        <h3>Task: ${cur.name}</h3>
-        <h5>Reflection: ${cur.reflection}</h5>
+        <h5>Task: ${cur.name}</h5>
+        <h7>Reflection: ${cur.reflection}</h7>
     `;
     cell.innerHTML = elements;
     
@@ -146,17 +146,18 @@ function updateMissedDisplay(){
     var lastRow = table.rows[ table.rows.length - 1 ];
     var lastCell = lastRow.lastChild;
     lastCell.innerHTML = `
-        <h3>Task: ${cur.name}</h3>
-        <h5>Reflection: ${cur.reflection}</h5>
+        <h5>Task: ${cur.name}</h5>
+        <h7>Reflection: ${cur.reflection}</h7>
     `
 }
 
 function addCompletedToDisplay(){
-    var cur = Task.MISSED[(Task.MISSED.length)-1];
+    var cur = Task.COMPLETEDARR[(Task.COMPLETEDARR.length)-1];
     var table = document.getElementById("completed-table");
     var row = table.insertRow();
     var cell = row.insertCell();
     var elements = `
-        <h3>Task: ${cur.name}</h3>
+        <h5>Task: ${cur.name}</h5>
     `;
+    cell.innerHTML = elements;
 }
