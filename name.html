@@ -140,9 +140,9 @@
       </div><br>
     
       <!--Button to open up rewards-->
-      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button><br>
+      <button onclick="showElement('rewards')" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button><br>
 
-      <button onclick="document.getElementById('historyModal').style.display='block'" class="w3-button w3-blue w3-round-xlarge w3-block w3-xlarge">View your task history</button>
+      <button onclick="showElement('historyModal'); " class="w3-button w3-blue w3-round-xlarge w3-block w3-xlarge">View your task history</button>
 
       <!--Modal class-->
       <div id="rewards" class="w3-modal">
@@ -237,7 +237,7 @@
               <header class="w3-container w3-red">
                 <h3>Missed</h3>
               </header>
-              <table id="historyMissed" class="w3-table w3-bordered">
+              <table id="missedTable" class="w3-table w3-bordered">
                 <tr>
                   <th>
                     <h5>Task Name : Incomplete</h5>
@@ -248,7 +248,7 @@
               <br><header class="w3-container w3-green">
                 <h3>Completed</h3>
               </header>
-              <table id="historyCompleted" class="w3-table w3-bordered">
+              <table id="completedTable" class="w3-table w3-bordered">
                 <tr>
                   <th>
                     <h5>Task Name : Completed</h5>
@@ -296,7 +296,9 @@
 
     <!--Script component of this HTML file-->
     <script>
-
+      function showElement(elID){
+        document.getElementById(elID).style.display="block";
+      }
       document.getElementsByClassName("tablink")[0].click();
 
       /** Moves the images and text to the correct tabs in the rewards modal */
@@ -358,6 +360,7 @@
           modal.style.display = "none";
         }
       }
+      
 
     </script>
    
