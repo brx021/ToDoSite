@@ -60,11 +60,12 @@ function removeCancel(n){
     taskId = taskElement.childNodes[0].id;
     curr = Task.ALLTASKS[taskId-1];
     curr.incomplete();
-    taskElement.style.display = 'none';
+    taskElement.style.display = 'none'; 
+    
+    createBlankRef(curr);//blank reflection, gets updated when they press enter
+    modal.style.display = "block"; //open reflection modal
+    drawPercentage();//I don't think we need this but whatever
     console.log(Task.MISSED);
-    drawPercentage();
-
-    modal.style.display = "block";
 }
 
 /** Removes the task from the list, and also the overall array of tasks */
@@ -77,6 +78,16 @@ function removeDelete(n){
     console.log(Task.ALLTASKS);
     drawPercentage();
 }
+
+function createBlankRef(currTask){
+    currTask.setReflection("none"); 
+}
+
+function checkRefForm(e){
+    if(e && e.keyCode == 13){
+        
+    }
+}       
 
 /** When the "Set as Profile" button is clicked, the profile picture is changed accordingly */
 function changePfp(name) {
