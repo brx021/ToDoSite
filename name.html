@@ -133,63 +133,64 @@
           <h6>Unlock more trees as you complete more tasks</h6>
           </header>
 
-          <!--Tabs for the modal-->
+        <!--Tabs for the modal-->
         <div class="w3-bar w3-border-bottom">
-        <button class="tablink w3-bar-item w3-button" onclick="openTree(event, 'redwood')">Zhangye Danxia Geopark, China</button>
-        <button id="aspenBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Aspen')" disabled>Venice, Italy</button>
-        <button id="eucalyptusBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Eucalyptus')" disabled>Banff National Park, Canada</button>
-        <button id="bambooBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Bamboo')" disabled>Great Ocean Road, Australia</button>
-        <button id="wisteriaBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Wisteria')" disabled>Machu Picchu</button>
-        <button id="baobabBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Baobab')" disabled>Pamukkale, Turkey</button>
-        <button id="mangroveBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Mangrove')" disabled>Cherry Blossoms in Japan</button>
-        <button id="sakuraBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Sakura')" disabled>Pitons, St Lucia</button>
+        <button class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'China')">China</button>
+        <button id="italyBtn" class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'Italy')" disabled>Italy</button>
+        <button id="canadaBtn" class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'Canada')" disabled>Canada</button>
+        <button id="australiaBtn" class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'Australia')" disabled>Australia</button>
+        <button id="peruBtn" class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'Peru')" disabled>Peru</button>
+        <button id="turkeyBtn" class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'Turkey')" disabled>Turkey</button>
+        <button id="japanBtn" class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'Japan')" disabled>Japan</button>
+        <button id="luciaBtn" class="tablink w3-bar-item w3-button" style="width:12.5%" onclick="openLocation(event, 'St Lucia')" disabled>St Lucia</button>
         </div>
 
-        <div id="redwood" class="w3-container tree">
+        <!--Pictures and descriptions that go in each tab-->
+        <div id="China" class="w3-container location">
         <h1>Zhangye Danxia Geopark, China</h1>
-        <img src="Zhangye Danxia Geopark, China.jpg" class="w3-round" style="width:100%" alt="Redwood">
+        <img src="china.jpg" class="w3-round" style="width:100%" alt="China">
         <p>Geology lovers and avid Instagrammers alike will be drawn to the otherworldly hues of the "Rainbow Mountains." The colors were formed by the layering of sedimentary mineral deposits over millions of years, but it's hard to look at the flowing reds, yellows, and oranges and not feel like you're witnessing magic.</p>
         </div>
 
-        <div id="Aspen" class="w3-container tree">
+        <div id="Italy" class="w3-container location">
         <h1>Venice, Italy</h1>
-        <img src="Venice, Italy.jpg" class="w3-round" style="width:100%" alt="Aspen">
+        <img src="italy.jpg" class="w3-round" style="width:100%" alt="Italy">
         <p>If traversing the canals with a be-striped gondolier sounds unbearably touristy, stick to the sidewalks and spectacular arched bridges to get your fill of this truly unique, wildly romantic floating city.</p>
         </div>
 
-        <div id="Eucalyptus" class="w3-container tree">
+        <div id="Canada" class="w3-container location">
         <h1>Banff National Park, Canada</h1>
-        <img src="Banff National Park, Canada.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+        <img src="canada.jpg" class="w3-round" style="width:100%" alt="Canada">
         <p>The glacial lakes in Canada's first national park have some of the bluest water you've ever seen. Even if you're not particularly outdoorsy, you can still admire the views from one of the cozy and luxurious lakeside lodges throughout the park, like the Fairmont Chateau Lake Louise.</p>
         </div>
 
-        <div id="Bamboo" class="w3-container tree">
+        <div id="Australia" class="w3-container location">
         <h1>Great Ocean Road, Australia</h1>
-        <img src="Great Ocean Road, Australia.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+        <img src="australia.jpg" class="w3-round" style="width:100%" alt="Australia">
         <p>Head west from Melbourne on this coastal drive to see everything from the famous 12 Apostle rock formations, to koalas in Great Otway National Park as well as the charming seaside town of Lorne.</p>
         </div>
 
-        <div id="Wisteria" class="w3-container tree">
-        <h1>Machu Picchu</h1>
-        <img src="Machu Picchu.jpg" class="w3-round" style="width:100%" alt="Wisteria">
+        <div id="Peru" class="w3-container location">
+        <h1>Macchu Picchu, Peru</h1>
+        <img src="peru.jpg" class="w3-round" style="width:100%" alt="Peru">
         <p>This World Heritage site is easily the most famous spot in Peru, and for good reason. The ancient terraced city’s astounding architecture and sweeping views of the surrounding mountains will leave you breathless (as might the nearly 8,000 foot elevation.)</p>
         </div>
 
-        <div id="Baobab" class="w3-container tree">
+        <div id="Turkey" class="w3-container location">
         <h1>Pamukkale, Turkey</h1>
-        <img src="Pamukkale, Turkey.jpg" class="w3-round" style="width:100%" alt="Baobab">
+        <img src="turkey.jpg" class="w3-round" style="width:100%" alt="Turkey">
         <p>Put every infinity pool you’ve ever seen to shame with these natural, snow-white hot springs overlooking the nearby city of Denizli. On top of the picturesque soak, Pamukkale is also home to the impressively preserved ruins of the ancient Roman spa-city Hierapolis where you can bathe like an emperor among the submerged centuries-old columns.</p>
         </div>
 
-        <div id="Mangrove" class="w3-container tree">
-        <h1>Cherry Blossoms in Japan</h1>
-        <img src="Cherry Blossoms in Japan.jpg" class="w3-round" style="width:100%" alt="Mangrove">
+        <div id="Japan" class="w3-container location">
+        <h1>Hirosaki Castle Park, Japan</h1>
+        <img src="japan.jpg" class="w3-round" style="width:100%" alt="Japan">
         <p>While Japan is beautiful year-round, the few weeks each spring when cherry trees across the country explode with blossoms is a particularly pretty time to visit.</p>
         </div>
 
-        <div id="Sakura" class="w3-container tree">
+        <div id="St Lucia" class="w3-container location">
         <h1>Pitons, St Lucia</h1>
-        <img src="Pitons, St Lucia.jpg" class="w3-round" style="width:100%" alt="Sakura">
+        <img src="stlucia.jpg" class="w3-round" style="width:100%" alt="St Lucia">
         <p>These two volcanic mountains are one of the most recognizable—not to mention beautiful—features on this Caribbean island. Enjoy the Pitons from the pristine white sand beach at Sugar Beach, A Viceroy Resort.</p>
         </div>
         </div>
@@ -241,9 +242,9 @@
       document.getElementsByClassName("tablink")[0].click();
 
       /** Moves the images and text to the correct tabs in the rewards modal */
-      function openTree(evt, treeName) {
+      function openLocation(evt, locationName) {
         var i, x, tablinks;
-        x = document.getElementsByClassName("tree");
+        x = document.getElementsByClassName("location");
         for (i = 0; i < x.length; i++) {
           x[i].style.display = "none";
         }
@@ -251,38 +252,38 @@
         for (i = 0; i < x.length; i++) {
           tablinks[i].classList.remove("w3-light-grey");
         }
-        document.getElementById(treeName).style.display = "block";
+        document.getElementById(locationName).style.display = "block";
         evt.currentTarget.classList.add("w3-light-grey");
       }
 
       /** Once the user completes a certain number of tasks, they unlock a new tab */
       function updateReward(){
         if (Task.ALLTIME >= 10 && Task.ALLTIME < 30){
-          var unlock = document.getElementById("aspenBtn");
+          var unlock = document.getElementById("italyBtn");
           unlock.disabled = false;
         }
         else if (Task.ALLTIME >= 30 && Task.ALLTIME < 60){
-          var unlock = document.getElementById("eucalyptusBtn");
+          var unlock = document.getElementById("canadaBtn");
           unlock.disabled = false;
         }
         else if (Task.ALLTIME >= 60 && Task.ALLTIME < 100){
-          var unlock = document.getElementById("bambooBtn");
+          var unlock = document.getElementById("australiaBtn");
           unlock.disabled = false;
         }
         else if (Task.ALLTIME >= 100 && Task.ALLTIME < 150){
-          var unlock = document.getElementById("wisteriaBtn");
+          var unlock = document.getElementById("peruBtn");
           unlock.disabled = false;
         }
         else if (Task.ALLTIME >= 150 && Task.ALLTIME < 250){
-          var unlock = document.getElementById("baobabBtn");
+          var unlock = document.getElementById("turkeyBtn");
           unlock.disabled = false;
         }
         else if (Task.ALLTIME >= 250 && Task.ALLTIME < 500){
-          var unlock = document.getElementById("mangroveBtn");
+          var unlock = document.getElementById("japanBtn");
           unlock.disabled = false;
         }
         else if (Task.ALLTIME >= 500 && Task.ALLTIME < 1000){
-          var unlock = document.getElementById("sakuraBtn");
+          var unlock = document.getElementById("luciaBtn");
           unlock.disabled = false;
         }
       }
