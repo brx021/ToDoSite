@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-<div class="header">
-  <p>Management</p>
-</div>
 <title>To Do</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,7 +102,12 @@
 
 
 <body class="w3-light-grey">
-  
+
+  <!--Header which also contains the date-->
+<header class="w3-container w3-teal w3-center w3-margin-bottom w3-xxlarge">
+  <p id = "date"></p>
+</header>
+
 <!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
@@ -138,7 +140,7 @@
       </div><br>
     
       <!--Button to open up rewards-->
-      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore Your Vacation Places</button>
+      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button>
 
       <!--Modal class-->
       <div id="rewards" class="w3-modal">
@@ -212,20 +214,15 @@
         </div>
       </div>
 
-      <!--Clock-->
-      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
-        <p id = "clock"></p>
-      </div>
-
     <!-- End Left Column -->
     </div>
 
     <!-- Right Column -->
     <div class="w3-twothird">
 
-      <!--Date panel-->
-      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xlarge">
-        <p id = "date"></p>
+      <!--Clock panel-->
+      <div class="w3-panel w3-gray w3-round-xlarge w3-center w3-xxlarge">
+        <p id = "clock"></p>
       </div>
 
       <!--Table that shows all the unfinished tasks-->
