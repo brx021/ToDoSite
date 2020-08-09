@@ -122,7 +122,7 @@
       </div><br>
     
       <!--Button to open up rewards-->
-      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore Your Forest</button>
+      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore Your Vacation Places</button>
 
       <!--Modal class-->
       <div id="rewards" class="w3-modal">
@@ -134,65 +134,64 @@
           </header>
 
           <!--Tabs for the modal-->
-          <div class="w3-bar w3-border-bottom">
-          <button class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Redwood')">Redwood</button>
-          <button id="aspenBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Aspen')" disabled>Aspen</button>
-          <button id="eucalyptusBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Eucalyptus')" disabled>Eucalyptus</button>
-          <button id="bambooBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Bamboo')" disabled>Bamboo</button>
-          <button id="wisteriaBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Wisteria')" disabled>Wisteria</button>
-          <button id="baobabBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Baobab')" disabled>Baobab</button>
-          <button id="mangroveBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Mangrove')" disabled>Mangrove</button>
-          <button id="sakuraBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Sakura')" disabled>Sakura</button>
-          </div>
+        <div class="w3-bar w3-border-bottom">
+        <button class="tablink w3-bar-item w3-button" onclick="openTree(event, 'redwood')">Zhangye Danxia Geopark, China</button>
+        <button id="aspenBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Aspen')" disabled>Venice, Italy</button>
+        <button id="eucalyptusBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Eucalyptus')" disabled>Banff National Park, Canada</button>
+        <button id="bambooBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Bamboo')" disabled>Great Ocean Road, Australia</button>
+        <button id="wisteriaBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Wisteria')" disabled>Machu Picchu</button>
+        <button id="baobabBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Baobab')" disabled>Pamukkale, Turkey</button>
+        <button id="mangroveBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Mangrove')" disabled>Cherry Blossoms in Japan</button>
+        <button id="sakuraBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Sakura')" disabled>Pitons, St Lucia</button>
+        </div>
 
-          <!--Content that goes under each tab-->
-          <div id="Redwood" class="w3-container tree">
-          <h1>Redwood Forest</h1>
-          <img src="redwood.jpg" class="w3-round" style="width:100%" alt="Redwood">
-          <p>Officially, the oldest living coast redwood is at least 2,200 years old, but foresters believe some coast redwoods may be much older.</p>
-          </div>
+        <div id="redwood" class="w3-container tree">
+        <h1>Zhangye Danxia Geopark, China</h1>
+        <img src="Zhangye Danxia Geopark, China.jpg" class="w3-round" style="width:100%" alt="Redwood">
+        <p>Geology lovers and avid Instagrammers alike will be drawn to the otherworldly hues of the "Rainbow Mountains." The colors were formed by the layering of sedimentary mineral deposits over millions of years, but it's hard to look at the flowing reds, yellows, and oranges and not feel like you're witnessing magic.</p>
+        </div>
 
-          <div id="Aspen" class="w3-container tree">
-          <h1>The Trembling Giant</h1>
-          <img src="aspen.jpg" class="w3-round" style="width:100%" alt="Aspen">
-          <p>The Trembling Giant is a massive grove of genetically identical quaking aspen, and is technically the oldest organism on the planet at an estimated 80,000 years old.</p>
-          </div>
+        <div id="Aspen" class="w3-container tree">
+        <h1>Venice, Italy</h1>
+        <img src="Venice, Italy.jpg" class="w3-round" style="width:100%" alt="Aspen">
+        <p>If traversing the canals with a be-striped gondolier sounds unbearably touristy, stick to the sidewalks and spectacular arched bridges to get your fill of this truly unique, wildly romantic floating city.</p>
+        </div>
 
-          <div id="Eucalyptus" class="w3-container tree">
-          <h1>Rainbow Eucalyptus</h1>
-          <img src="eucalyptus.jpg" class="w3-round" style="width:100%" alt="Bamboo">
-          <p>Normally an orange-brown color, the eucalyptus's smooth bark peels away in the summer to reveal green, red, and purple coloring.</p>
-          </div>
+        <div id="Eucalyptus" class="w3-container tree">
+        <h1>Banff National Park, Canada</h1>
+        <img src="Banff National Park, Canada.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+        <p>The glacial lakes in Canada's first national park have some of the bluest water you've ever seen. Even if you're not particularly outdoorsy, you can still admire the views from one of the cozy and luxurious lakeside lodges throughout the park, like the Fairmont Chateau Lake Louise.</p>
+        </div>
 
-          <div id="Bamboo" class="w3-container tree">
-          <h1>Bamboo Grove</h1>
-          <img src="bamboo.jpg" class="w3-round" style="width:100%" alt="Bamboo">
-          <p>The fastest growing plant on the planet, bamboo can grow up to 3 feet in 24 hours.</p>
-          </div>
+        <div id="Bamboo" class="w3-container tree">
+        <h1>Great Ocean Road, Australia</h1>
+        <img src="Great Ocean Road, Australia.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+        <p>Head west from Melbourne on this coastal drive to see everything from the famous 12 Apostle rock formations, to koalas in Great Otway National Park as well as the charming seaside town of Lorne.</p>
+        </div>
 
-          <div id="Wisteria" class="w3-container tree">
-          <h1>Hanging Wisteria</h1>
-          <img src="wisteria.jpg" class="w3-round" style="width:100%" alt="Wisteria">
-          <p>Wisteria isn't a tree, but rather a woody vine that twines around nearby trees, shrubs, and various manmade structures.</p>
-          </div>
+        <div id="Wisteria" class="w3-container tree">
+        <h1>Machu Picchu</h1>
+        <img src="Machu Picchu.jpg" class="w3-round" style="width:100%" alt="Wisteria">
+        <p>This World Heritage site is easily the most famous spot in Peru, and for good reason. The ancient terraced city’s astounding architecture and sweeping views of the surrounding mountains will leave you breathless (as might the nearly 8,000 foot elevation.)</p>
+        </div>
 
-          <div id="Baobab" class="w3-container tree">
-          <h1>Baobab Path</h1>
-          <img src="baobab.jpg" class="w3-round" style="width:100%" alt="Baobab">
-          <p>A baobab trunk can store up to 100,000 liters of water.</p>
-          </div>
+        <div id="Baobab" class="w3-container tree">
+        <h1>Pamukkale, Turkey</h1>
+        <img src="Pamukkale, Turkey.jpg" class="w3-round" style="width:100%" alt="Baobab">
+        <p>Put every infinity pool you’ve ever seen to shame with these natural, snow-white hot springs overlooking the nearby city of Denizli. On top of the picturesque soak, Pamukkale is also home to the impressively preserved ruins of the ancient Roman spa-city Hierapolis where you can bathe like an emperor among the submerged centuries-old columns.</p>
+        </div>
 
-          <div id="Mangrove" class="w3-container tree">
-          <h1>Underwater Mangrove Forest</h1>
-          <img src="mangrove.jpg" class="w3-round" style="width:100%" alt="Mangrove">
-          <p>Mangroves, specifically the underwater habitat their roots provide, offer critical nursing environments for juveniles of thousands of fish species, from gobies to sharks.</p>
-          </div>
+        <div id="Mangrove" class="w3-container tree">
+        <h1>Cherry Blossoms in Japan</h1>
+        <img src="Cherry Blossoms in Japan.jpg" class="w3-round" style="width:100%" alt="Mangrove">
+        <p>While Japan is beautiful year-round, the few weeks each spring when cherry trees across the country explode with blossoms is a particularly pretty time to visit.</p>
+        </div>
 
-          <div id="Sakura" class="w3-container tree">
-          <h1>Cherry Blossom Garden</h1>
-          <img src="sakura.jpg" class="w3-round" style="width:100%" alt="Sakura">
-          <p>More than just a symbol for spring, Japan's national flowers stand for renewal and hope.</p>
-          </div>
+        <div id="Sakura" class="w3-container tree">
+        <h1>Pitons, St Lucia</h1>
+        <img src="Pitons, St Lucia.jpg" class="w3-round" style="width:100%" alt="Sakura">
+        <p>These two volcanic mountains are one of the most recognizable—not to mention beautiful—features on this Caribbean island. Enjoy the Pitons from the pristine white sand beach at Sugar Beach, A Viceroy Resort.</p>
+        </div>
         </div>
       </div>
 
