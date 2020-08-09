@@ -280,16 +280,20 @@
           <input onKeyPress="checkRefForm(event);" id='reflection' class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-white w3-margin-top' placeholder='Type Here' style='width:30%'>
             <h5 class='w3-opacity w3-padding-4'><b>
         </div>
-        <div class="modal-footer"></div>
-      </div>
+      <div class="modal-footer"></div>
+    </div>
+
     </div>
     
 
     <!--Script component of this HTML file-->
     <script>
+
+      /** Shows the modal whose ID is passed in */
       function showElement(elID){
         document.getElementById(elID).style.display="block";
       }
+
       document.getElementsByClassName("tablink")[0].click();
 
       /** Moves the images and text to the correct tabs in the rewards modal */
