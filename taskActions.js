@@ -44,10 +44,8 @@ function removeCompleted(n){
     taskElement = n.parentElement.parentElement.parentElement;
     taskId = taskElement.childNodes[0].id;
     curr = Task.ALLTASKS[taskId-1];
-    curr.complete()
+    curr.complete();
     taskElement.style.display = 'none';
-    Task.COMPLETED ++;
-    Task.ALLTIME ++;
     drawPercentage();
     updateReward();
 }
