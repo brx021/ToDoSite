@@ -6,6 +6,7 @@ class Task{
     static COMPLETED = 0;
     static MISSED = [];
     static ALLTIME = 0;
+    
     name; 
     completed;  //undefined = in progress, 
     date; 
@@ -53,6 +54,6 @@ class Task{
     
     incomplete(){
         this.completed = new Boolean(false);
-        Task.MISSED ++;
+        Task.MISSED.push(this);
     }
 }

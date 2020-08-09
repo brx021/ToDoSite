@@ -1,7 +1,7 @@
 var task;
-
+var idNum = 0;
 function addTask() {
-    idNum = Task.COUNT +1;  //so the newest id can be the same as the count
+    idNum ++;  //id is always increasing, task.COUNT can decrease
     task = new Task("");
     var table = document.getElementById("table");
     var row = table.insertRow();
@@ -15,7 +15,7 @@ function addTask() {
     elements += "<span id='delete' onclick=removeDelete(this) class='w3-button w3-red w3-round-xxlarge w3-margin-right w3-medium'>Delete</span>";
     
     cell.innerHTML = elements;
-    console.log(Task.COUNT);
+    console.log("count:" + Task.COUNT, Task.ALLTASKS );
     drawPercentage();
 }
 
@@ -42,9 +42,10 @@ function drawPercentage(){
 
 function removeCompleted(n){
     taskElement = n.parentElement.parentElement.parentElement;
-    taskElement.style.display = 'none';
     taskId = taskElement.childNodes[0].id;
     curr = Task.ALLTASKS[taskId-1];
+    curr.complete()
+    taskElement.style.display = 'none';
     Task.COMPLETED ++;
     Task.ALLTIME ++;
     drawPercentage();
@@ -52,8 +53,12 @@ function removeCompleted(n){
 }
 
 function removeCancel(n){
-    n.parentElement.parentElement.parentElement.style.display = 'none';
-    //Task.MISSED += current task
+    taskElement = n.parentElement.parentElement.parentElement;
+    taskId = taskElement.childNodes[0].id;
+    curr = Task.ALLTASKS[taskId-1];
+    curr.incomplete();
+    taskElement.style.display = 'none';
+    console.log(Task.MISSED);
     drawPercentage();
 
     modal.style.display = "block";
@@ -64,7 +69,7 @@ function removeDelete(n){
     taskElement.style.display = 'none';
     Task.COUNT --;
     taskId = taskElement.childNodes[0].id;
-    curr = Task.ALLTASKS[taskId-1];
-    curr = null;
+    Task.ALLTASKS[taskId-1] = null;
+    console.log(Task.ALLTASKS);
     drawPercentage();
 }
