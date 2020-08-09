@@ -1,6 +1,7 @@
 var idNum = 0;
 function addTask() {
     idNum ++;
+    Task.COUNT ++;
     var table = document.getElementById("table");
     var row = table.insertRow();
     var cell = row.insertCell();
@@ -12,9 +13,9 @@ function addTask() {
     elements += "<br><span onclick=removeCompleted(this) class='w3-button w3-black w3-round-xxlarge w3-margin-right w3-medium'>Mark Completed</span>";
     elements += "<span id='cancel' onclick=removeCancel(this) class='w3-button w3-red w3-round-xxlarge w3-margin-right w3-medium'>Mark Missed</span>";
     
-    cell.innerHTML = elements;
-    
+    cell.innerHTML = elements; 
 }
+
 function checkSubmit(e) {
     if(e && e.keyCode == 13) {
         
@@ -34,12 +35,15 @@ function storeTask(id){
 
 
 function drawPercentage(){
-    var total = document.getElementById('total');
-    total.innerHTML = "<i class='fa fa-globe fa-fw w3-margin-right w3-text-teal'></i>Total Completed: " + Task.COMPLETED + " Task(s)";
+    
+        var total = document.getElementById('total');
+        total.innerHTML = "<i class='fa fa-globe fa-fw w3-margin-right w3-text-teal'></i>Total Completed: " + Task.COMPLETED + " Task(s)";
 
-    var totalPercent = Math.round(Task.COMPLETED/Task.COUNT * 100);
-    var totalBar = document.getElementById("totalBar");
-    totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + totalPercent + "%'>" + totalPercent + "%</div>";
+
+        var totalPercent = Math.round(Task.COMPLETED/Task.COUNT * 100);
+
+        var totalBar = document.getElementById("totalBar");
+        totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + totalPercent + "%'>" + totalPercent + "%</div>";
 }
 
 function removeCompleted(n){
@@ -53,6 +57,8 @@ function removeCompleted(n){
     n.parentElement.parentElement.parentElement.style.display = 'none';
     Task.MISSED ++;
     drawPercentage();
-    //Brandon you didn't define modal here idk how to refer it to the element it must have been accidentally deleted
+
     modal.style.display = "block";
   }
+
+  

@@ -16,8 +16,77 @@
 <script src="drawclock.js"></script>
 <script src="printdate.js"></script>
 
+<!--Sets the basic class for the modal that the reflection popup will use, along with the overall font on the site-->
 <style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+  html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+      
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    padding: 2px 16px;
+    background-color: teal;
+    color: white;
+  }
+  
+  .modal-body {padding: 2px 16px;}
+  
+  .modal-footer {
+    padding: 2px 16px;
+    background-color: teal;
+    color: white;
+  }
+
 </style>
 
 <body class="w3-light-grey">
@@ -35,99 +104,142 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <div class="w3-display-container">
           <img src="logo.png" style="width:100%" alt="Avatar">
   
-            <!--Header under logo-->
+          <!--Header under logo-->
           <div class="w3-display-bottomleft w3-container w3-text-black">
             <h2>Your To Do List</h2>
-
           </div>
         </div>
         <div class="w3-container">
 
-          <!--Percentage bars under "Total"-->
+          <!--Percentage bar under "Total"-->
           <p class="w3-large w3-text-theme"><b id = "total" ><i  class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Total Completed</b></p>
           <div id="totalBar" class="w3-light-grey w3-round-xxlarge">
             <div class="w3-round-xlarge w3-teal w3-center" style="height:24px;width:0%">0%</div>
-          </div>
-          <br>
+          </div><br>
+
         </div>
       </div><br>
+    
+      <!--Button to open up rewards-->
+      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore Your Forest</button>
 
-    <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore Your Forest</button>
+      <!--Modal class-->
+      <div id="rewards" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+          <header class="w3-container w3-teal"> 
+          <span onclick="document.getElementById('rewards').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright">&times;</span>
+          <h2>Your Forest</h2>
+          <h6>Unlock more trees as you complete more tasks</h6>
+          </header>
 
-    <div id="rewards" class="w3-modal">
-      <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-        <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('rewards').style.display='none'" 
-        class="w3-button w3-teal w3-xlarge w3-display-topright">&times;</span>
-        <h2>Your Forest</h2>
-        <h6>Unlock more trees as you complete more tasks</h6>
-        </header>
+          <!--Tabs for the modal-->
+          <div class="w3-bar w3-border-bottom">
+          <button class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Redwood')">Redwood</button>
+          <button id="aspenBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Aspen')" disabled>Aspen</button>
+          <button id="eucalyptusBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Eucalyptus')" disabled>Eucalyptus</button>
+          <button id="bambooBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Bamboo')" disabled>Bamboo</button>
+          <button id="wisteriaBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Wisteria')" disabled>Wisteria</button>
+          <button id="baobabBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Baobab')" disabled>Baobab</button>
+          <button id="mangroveBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Mangrove')" disabled>Mangrove</button>
+          <button id="sakuraBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Sakura')" disabled>Sakura</button>
+          </div>
 
-        <div class="w3-bar w3-border-bottom">
-        <button class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Redwood')">Redwood</button>
-        <button id="aspenBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Aspen')" disabled>Aspen</button>
-        <button id="eucalyptusBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Eucalyptus')" disabled>Eucalyptus</button>
-        <button id="bambooBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Bamboo')" disabled>Bamboo</button>
-        <button id="wisteriaBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Wisteria')" disabled>Wisteria</button>
-        <button id="baobabBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Baobab')" disabled>Baobab</button>
-        <button id="mangroveBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Mangrove')" disabled>Mangrove</button>
-        <button id="sakuraBtn" class="tablink w3-bar-item w3-button" onclick="openTree(event, 'Sakura')" disabled>Sakura</button>
+          <!--Content that goes under each tab-->
+          <div id="Redwood" class="w3-container tree">
+          <h1>Redwood Forest</h1>
+          <img src="redwood.jpg" class="w3-round" style="width:100%" alt="Redwood">
+          <p>Officially, the oldest living coast redwood is at least 2,200 years old, but foresters believe some coast redwoods may be much older.</p>
+          </div>
+
+          <div id="Aspen" class="w3-container tree">
+          <h1>The Trembling Giant</h1>
+          <img src="aspen.jpg" class="w3-round" style="width:100%" alt="Aspen">
+          <p>The Trembling Giant is a massive grove of genetically identical quaking aspen, and is technically the oldest organism on the planet at an estimated 80,000 years old.</p>
+          </div>
+
+          <div id="Eucalyptus" class="w3-container tree">
+          <h1>Rainbow Eucalyptus</h1>
+          <img src="eucalyptus.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+          <p>Normally an orange-brown color, the eucalyptus's smooth bark peels away in the summer to reveal green, red, and purple coloring.</p>
+          </div>
+
+          <div id="Bamboo" class="w3-container tree">
+          <h1>Bamboo Grove</h1>
+          <img src="bamboo.jpg" class="w3-round" style="width:100%" alt="Bamboo">
+          <p>The fastest growing plant on the planet, bamboo can grow up to 3 feet in 24 hours.</p>
+          </div>
+
+          <div id="Wisteria" class="w3-container tree">
+          <h1>Hanging Wisteria</h1>
+          <img src="wisteria.jpg" class="w3-round" style="width:100%" alt="Wisteria">
+          <p>Wisteria isn't a tree, but rather a woody vine that twines around nearby trees, shrubs, and various manmade structures.</p>
+          </div>
+
+          <div id="Baobab" class="w3-container tree">
+          <h1>Baobab Path</h1>
+          <img src="baobab.jpg" class="w3-round" style="width:100%" alt="Baobab">
+          <p>A baobab trunk can store up to 100,000 liters of water.</p>
+          </div>
+
+          <div id="Mangrove" class="w3-container tree">
+          <h1>Underwater Mangrove Forest</h1>
+          <img src="mangrove.jpg" class="w3-round" style="width:100%" alt="Mangrove">
+          <p>Mangroves, specifically the underwater habitat their roots provide, offer critical nursing environments for juveniles of thousands of fish species, from gobies to sharks.</p>
+          </div>
+
+          <div id="Sakura" class="w3-container tree">
+          <h1>Cherry Blossom Garden</h1>
+          <img src="sakura.jpg" class="w3-round" style="width:100%" alt="Sakura">
+          <p>More than just a symbol for spring, Japan's national flowers stand for renewal and hope.</p>
+          </div>
         </div>
-
-        <div id="Redwood" class="w3-container tree">
-        <h1>Redwood Forest</h1>
-        <img src="redwood.jpg" class="w3-round" style="width:100%" alt="Redwood">
-        <p>Officially, the oldest living coast redwood is at least 2,200 years old, but foresters believe some coast redwoods may be much older.</p>
-        </div>
-
-        <div id="Aspen" class="w3-container tree">
-        <h1>The Trembling Giant</h1>
-        <img src="aspen.jpg" class="w3-round" style="width:100%" alt="Aspen">
-        <p>The Trembling Giant is a massive grove of genetically identical quaking aspen, and is technically the oldest organism on the planet at an estimated 80,000 years old.</p>
-        </div>
-
-        <div id="Eucalyptus" class="w3-container tree">
-        <h1>Rainbow Eucalyptus</h1>
-        <img src="eucalyptus.jpg" class="w3-round" style="width:100%" alt="Bamboo">
-        <p>Normally an orange-brown color, the eucalyptus's smooth bark peels away in the summer to reveal green, red, and purple coloring.</p>
-        </div>
-
-        <div id="Bamboo" class="w3-container tree">
-        <h1>Bamboo Grove</h1>
-        <img src="bamboo.jpg" class="w3-round" style="width:100%" alt="Bamboo">
-        <p>The fastest growing plant on the planet, bamboo can grow up to 3 feet in 24 hours.</p>
-        </div>
-
-        <div id="Wisteria" class="w3-container tree">
-        <h1>Hanging Wisteria</h1>
-        <img src="wisteria.jpg" class="w3-round" style="width:100%" alt="Wisteria">
-        <p>Wisteria isn't a tree, but rather a woody vine that twines around nearby trees, shrubs, and various manmade structures.</p>
-        </div>
-
-        <div id="Baobab" class="w3-container tree">
-        <h1>Baobab Path</h1>
-        <img src="baobab.jpg" class="w3-round" style="width:100%" alt="Baobab">
-        <p>A baobab trunk can store up to 100,000 liters of water.</p>
-        </div>
-
-        <div id="Mangrove" class="w3-container tree">
-        <h1>Underwater Mangrove Forest</h1>
-        <img src="mangrove.jpg" class="w3-round" style="width:100%" alt="Mangrove">
-        <p>Mangroves, specifically the underwater habitat their roots provide, offer critical nursing environments for juveniles of thousands of fish species, from gobies to sharks.</p>
-        </div>
-
-        <div id="Sakura" class="w3-container tree">
-        <h1>Cherry Blossom Garden</h1>
-        <img src="sakura.jpg" class="w3-round" style="width:100%" alt="Sakura">
-        <p>More than just a symbol for spring, Japan's national flowers stand for renewal and hope.</p>
-        </div>
-
       </div>
+
+      <!--Clock-->
+      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
+        <p id = "clock"></p>
+      </div>
+
+    <!-- End Left Column -->
     </div>
 
-      <script>
+    <!-- Right Column -->
+    <div class="w3-twothird">
+
+      <!--Date panel-->
+      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xlarge">
+        <p id = "date"></p>
+      </div>
+
+      <!--Table that shows all the unfinished tasks-->
+      <table id="table" class="w3-table w3-card-4 w3-bordered"></table>
+
+      <!--Button that adds new tasks-->
+      <p><button onclick=addTask() class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge">+ Add Task</button></p>
+    </div>
+      
+    <!--Reflection modal class-->  
+    <div id="myPopup" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Reflection Time!</h2>
+        </div>
+        <div class="modal-body">
+          <p>Why did you miss this goal?</p>
+          <input id='reflection' class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-white w3-margin-top' placeholder='Type Here' style='width:30%'>
+            <h5 class='w3-opacity w3-padding-4'><b>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+      
+    <!--Script component of this HTML file-->
+    <script>
+
       document.getElementsByClassName("tablink")[0].click();
 
+      /** Moves the images and text to the correct tabs in the rewards modal */
       function openTree(evt, treeName) {
         var i, x, tablinks;
         x = document.getElementsByClassName("tree");
@@ -142,6 +254,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         evt.currentTarget.classList.add("w3-light-grey");
       }
 
+      /** Once the user completes a certain number of tasks, they unlock a new tab */
       function updateReward(){
         if (Task.ALLTIME >= 10 && Task.ALLTIME < 30){
           var unlock = document.getElementById("aspenBtn");
@@ -172,60 +285,29 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
           unlock.disabled = false;
         }
       }
-      </script>
-
-    <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
-      <p id = "clock"></p>
-      
-    </div>
-
-    <!-- End Left Column -->
-    </div>
-
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    
-      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xlarge">
-        <p id = "date"></p>
         
-      </div>
+      /** Handles the user closing the reflection popup */
+      var modal = document.getElementById("myPopup");
+      var span = document.getElementsByClassName("close")[0];
 
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
 
-        <table id="table" class="w3-table w3-card-4 w3-bordered"></table>
-
-
-
-      <p><button onclick=addTask() class="w3-button w3-teal w3-round-xxlarge w3-block w3-xlarge">+ Add Task</button></p>
-
-     
-    </div>
-
-
-      
-      <div id="myPopup" class="modal">
-      
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close">&times;</span>
-            <h2>Reflection Time!</h2>
-          </div>
-          <div class="modal-body">
-            <p>Why did you miss this goal?</p>
-            <input id='reflection' class='w3-input w3-animate-input w3-border-0 w3-bottombar w3-white w3-margin-top' placeholder='Type Here' style='width:30%'>
-              <h5 class='w3-opacity w3-padding-4'><b>
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div>
-      
-      </div>
-      
+    </script>
    
   <!-- End Grid -->
   </div>
-  <!-- End Page Container -->
+
+<!-- End Page Container -->
 </div>
 
+<!--Footer for the website-->
 <footer class="w3-container w3-teal w3-center w3-margin-top">
   <p>Website created by IvyHacks</p>
   <i class="fa fa-facebook-official w3-hover-opacity"></i>
