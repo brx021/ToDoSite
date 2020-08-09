@@ -1,5 +1,6 @@
 class Task{
     static ALLTASKS = [];
+    static POINTS = 0;
     static COUNT = 0;
     static CATEGORIES = [];
     static COMPLETED = 0;
