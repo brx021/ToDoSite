@@ -4,7 +4,7 @@ class Task{
     static COMPLETED = 0;   //completed tasks for each day
     static MISSED = [];     //array of tasks that have been canceled
     static ALLTIME = 0;     //all time completed tasks
-    
+    static COMPLETEDARR = []; // array of completed tasks
     name; 
     completed;
     date; 
@@ -49,6 +49,7 @@ class Task{
         this.completed = true;
         Task.COMPLETED ++;
         Task.ALLTIME ++;
+        Task.COMPLETEDARR.push(this);
     }
     
     incomplete(){

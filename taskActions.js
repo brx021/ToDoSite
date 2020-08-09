@@ -50,6 +50,7 @@ function removeCompleted(n){
     curr = Task.ALLTASKS[taskId-1];
     curr.complete();
     taskElement.style.display = 'none';
+    addCompletedToDisplay() 
     drawPercentage();
     updateReward();
 }
@@ -133,8 +134,8 @@ function addMissedToDisplay(){
     var cell = row.insertCell();
     console.log(cur);
     var elements = `
-        <h3>${cur.name}</h3>
-        <h5>${cur.reflection}</h5>
+        <h3>Task: ${cur.name}</h3>
+        <h5>Reflection: ${cur.reflection}</h5>
     `;
     cell.innerHTML = elements;
     
@@ -148,4 +149,14 @@ function updateMissedDisplay(){
         <h3>Task: ${cur.name}</h3>
         <h5>Reflection: ${cur.reflection}</h5>
     `
+}
+
+function addCompletedToDisplay(){
+    var cur = Task.MISSED[(Task.MISSED.length)-1];
+    var table = document.getElementById("completed-table");
+    var row = table.insertRow();
+    var cell = row.insertCell();
+    var elements = `
+        <h3>Task: ${cur.name}</h3>
+    `;
 }
