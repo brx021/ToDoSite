@@ -140,7 +140,9 @@
       </div><br>
     
       <!--Button to open up rewards-->
-      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button>
+      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button><br>
+
+      <button onclick="document.getElementById('historyModal').style.display='block'" class="w3-button w3-blue w3-round-xlarge w3-block w3-xlarge">View your task history</button>
 
       <!--Modal class-->
       <div id="rewards" class="w3-modal">
@@ -214,6 +216,31 @@
         </div>
       </div>
 
+      <!--History modal class-->
+      <div id="historyModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+          <header class="w3-container w3-teal"> 
+            <span onclick="document.getElementById('historyModal').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright">&times;</span>
+            <h2>Your history</h2>
+          </header>
+            <div class="modal-body">
+              <table id="history" class="w3-table w3-bordered">
+                <tr>
+                  <th>
+                    <h3>Task Name : Complete</h3>
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    <h3>Task Name : Incomplete</h3>
+                    <h5>Reflection</h5>
+                  </th>
+                </tr>
+              </table>
+            </div>
+        </div>
+      </div>
+
     <!-- End Left Column -->
     </div>
 
@@ -247,7 +274,7 @@
         <div class="modal-footer"></div>
       </div>
     </div>
-      
+    
 
     <!--Script component of this HTML file-->
     <script>
