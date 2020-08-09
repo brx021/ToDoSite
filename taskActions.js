@@ -17,6 +17,7 @@ function addTask() {
     console.log(Task.COUNT);
     drawPercentage();
 }
+
 function checkSubmit(e) {
     if(e && e.keyCode == 13) {
         
@@ -41,6 +42,7 @@ function drawPercentage(){
     total.innerHTML = "<i class='fa fa-globe fa-fw w3-margin-right w3-text-teal'></i>Total Completed: " + Task.COMPLETED + " out of "+ Task.COUNT + " Task(s)" ;
 
     var totalPercent = Math.round(Task.COMPLETED/Task.COUNT * 100);
+
     var totalBar = document.getElementById("totalBar");
     totalBar.innerHTML = "<div class='w3-round-xlarge w3-teal w3-center' style='height:24px;width:" + totalPercent + "%'>" + totalPercent + "%</div>";
 }
@@ -59,6 +61,6 @@ function removeCompleted(n){
     n.parentElement.parentElement.parentElement.style.display = 'none';
     //Task.MISSED += current task
     drawPercentage();
-    //Brandon you didn't define modal here idk how to refer it to the element it must have been accidentally deleted
+
     modal.style.display = "block";
-}
+  }
