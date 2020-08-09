@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-<div class="header">
-  <p>Management</p>
-</div>
 <title>To Do</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -105,7 +102,12 @@
 
 
 <body class="w3-light-grey">
-  
+
+  <!--Header which also contains the date-->
+<header class="w3-container w3-teal w3-center w3-margin-bottom w3-xxlarge">
+  <p id = "date"></p>
+</header>
+
 <!-- Page Container -->
 <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
@@ -117,7 +119,7 @@
     
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
-          <div class="crop">
+          <div id="profile" class="crop">
             <img src="images/china.jpg" alt="Avatar" class="w3-image">
           </div>
   
@@ -138,7 +140,9 @@
       </div><br>
     
       <!--Button to open up rewards-->
-      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore Your Vacation Places</button>
+      <button onclick="document.getElementById('rewards').style.display='block'" class="w3-button w3-gray w3-round-xlarge w3-block w3-xlarge">Explore The World</button><br>
+
+      <button onclick="document.getElementById('historyModal').style.display='block'" class="w3-button w3-blue w3-round-xlarge w3-block w3-xlarge">View your task history</button>
 
       <!--Modal class-->
       <div id="rewards" class="w3-modal">
@@ -166,55 +170,83 @@
         <h1>Zhangye Danxia Geopark, China</h1>
         <img src="images/china.jpg" class="w3-round" style="width:100%" alt="China">
         <p>Geology lovers and avid Instagrammers alike will be drawn to the otherworldly hues of the "Rainbow Mountains." The colors were formed by the layering of sedimentary mineral deposits over millions of years, but it's hard to look at the flowing reds, yellows, and oranges and not feel like you're witnessing magic.</p>
+        <span id='chinaPfp' onclick="changePfp('china')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
 
         <div id="Italy" class="w3-container location">
         <h1>Venice, Italy</h1>
         <img src="images/italy.jpg" class="w3-round" style="width:100%" alt="Italy">
         <p>If traversing the canals with a be-striped gondolier sounds unbearably touristy, stick to the sidewalks and spectacular arched bridges to get your fill of this truly unique, wildly romantic floating city.</p>
+        <span id='italyPfp' onclick="changePfp('italy')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
 
         <div id="Canada" class="w3-container location">
         <h1>Banff National Park, Canada</h1>
         <img src="images/canada.jpg" class="w3-round" style="width:100%" alt="Canada">
         <p>The glacial lakes in Canada's first national park have some of the bluest water you've ever seen. Even if you're not particularly outdoorsy, you can still admire the views from one of the cozy and luxurious lakeside lodges throughout the park, like the Fairmont Chateau Lake Louise.</p>
+        <span id='canadaPfp' onclick="changePfp('canada')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
 
         <div id="Australia" class="w3-container location">
         <h1>Great Ocean Road, Australia</h1>
         <img src="images/australia.jpg" class="w3-round" style="width:100%" alt="Australia">
         <p>Head west from Melbourne on this coastal drive to see everything from the famous 12 Apostle rock formations, to koalas in Great Otway National Park as well as the charming seaside town of Lorne.</p>
+        <span id='australiaPfp' onclick="changePfp('australia')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
 
         <div id="Peru" class="w3-container location">
         <h1>Macchu Picchu, Peru</h1>
         <img src="images/peru.jpg" class="w3-round" style="width:100%" alt="Peru">
         <p>This World Heritage site is easily the most famous spot in Peru, and for good reason. The ancient terraced city’s astounding architecture and sweeping views of the surrounding mountains will leave you breathless (as might the nearly 8,000 foot elevation.)</p>
+        <span id='peruPfp' onclick="changePfp('peru')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
 
         <div id="Turkey" class="w3-container location">
         <h1>Pamukkale, Turkey</h1>
         <img src="images/turkey.jpg" class="w3-round" style="width:100%" alt="Turkey">
         <p>Put every infinity pool you’ve ever seen to shame with these natural, snow-white hot springs overlooking the nearby city of Denizli. On top of the picturesque soak, Pamukkale is also home to the impressively preserved ruins of the ancient Roman spa-city Hierapolis where you can bathe like an emperor among the submerged centuries-old columns.</p>
+        <span id='turkeyPfp' onclick="changePfp('turkey')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
 
         <div id="Japan" class="w3-container location">
         <h1>Hirosaki Castle Park, Japan</h1>
         <img src="images/japan.jpg" class="w3-round" style="width:100%" alt="Japan">
         <p>While Japan is beautiful year-round, the few weeks each spring when cherry trees across the country explode with blossoms is a particularly pretty time to visit.</p>
+        <span id='japanPfp' onclick="changePfp('japan')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
 
         <div id="St Lucia" class="w3-container location">
         <h1>Pitons, St Lucia</h1>
         <img src="images/stlucia.jpg" class="w3-round" style="width:100%" alt="St Lucia">
         <p>These two volcanic mountains are one of the most recognizable—not to mention beautiful—features on this Caribbean island. Enjoy the Pitons from the pristine white sand beach at Sugar Beach, A Viceroy Resort.</p>
+        <span id='stluciaPfp' onclick="changePfp('stlucia')" class='w3-button w3-teal w3-round-xxlarge w3-margin-right w3-medium'>Set as Profile</span>
         </div>
         </div>
       </div>
 
-      <!--Clock-->
-      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xxlarge">
-        <p id = "clock"></p>
+      <!--History modal class-->
+      <div id="historyModal" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+          <header class="w3-container w3-teal"> 
+            <span onclick="document.getElementById('historyModal').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright">&times;</span>
+            <h2>Your history</h2>
+          </header>
+            <div class="modal-body">
+              <table id="history" class="w3-table w3-bordered">
+                <tr>
+                  <th>
+                    <h3>Task Name : Complete</h3>
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    <h3>Task Name : Incomplete</h3>
+                    <h5>Reflection</h5>
+                  </th>
+                </tr>
+              </table>
+            </div>
+        </div>
       </div>
 
     <!-- End Left Column -->
@@ -223,9 +255,9 @@
     <!-- Right Column -->
     <div class="w3-twothird">
 
-      <!--Date panel-->
-      <div class="w3-panel w3-teal w3-round-xlarge w3-center w3-xlarge">
-        <p id = "date"></p>
+      <!--Clock panel-->
+      <div class="w3-panel w3-gray w3-round-xlarge w3-center w3-xxlarge">
+        <p id = "clock"></p>
       </div>
 
       <!--Table that shows all the unfinished tasks-->
@@ -250,7 +282,7 @@
         <div class="modal-footer"></div>
       </div>
     </div>
-      
+    
 
     <!--Script component of this HTML file-->
     <script>
@@ -274,31 +306,31 @@
 
       /** Once the user completes a certain number of tasks, they unlock a new tab */
       function updateReward(){
-        if (Task.ALLTIME >= 1 && Task.ALLTIME < 2){
+        if (Task.ALLTIME >= 10 && Task.ALLTIME < 30){
           var unlock = document.getElementById("italyBtn");
           unlock.disabled = false;
         }
-        else if (Task.ALLTIME >= 2 && Task.ALLTIME < 3){
+        else if (Task.ALLTIME >= 30 && Task.ALLTIME < 60){
           var unlock = document.getElementById("canadaBtn");
           unlock.disabled = false;
         }
-        else if (Task.ALLTIME >= 3 && Task.ALLTIME < 4){
+        else if (Task.ALLTIME >= 60 && Task.ALLTIME < 100){
           var unlock = document.getElementById("australiaBtn");
           unlock.disabled = false;
         }
-        else if (Task.ALLTIME >= 4 && Task.ALLTIME < 5){
+        else if (Task.ALLTIME >= 100 && Task.ALLTIME < 150){
           var unlock = document.getElementById("peruBtn");
           unlock.disabled = false;
         }
-        else if (Task.ALLTIME >= 5 && Task.ALLTIME < 6){
+        else if (Task.ALLTIME >= 150 && Task.ALLTIME < 250){
           var unlock = document.getElementById("turkeyBtn");
           unlock.disabled = false;
         }
-        else if (Task.ALLTIME >= 6 && Task.ALLTIME < 7){
+        else if (Task.ALLTIME >= 250 && Task.ALLTIME < 500){
           var unlock = document.getElementById("japanBtn");
           unlock.disabled = false;
         }
-        else if (Task.ALLTIME >= 7 && Task.ALLTIME < 8){
+        else if (Task.ALLTIME >= 500 && Task.ALLTIME < 1000){
           var unlock = document.getElementById("luciaBtn");
           unlock.disabled = false;
         }

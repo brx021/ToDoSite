@@ -1,14 +1,12 @@
 class Task{
-    static ALLTASKS = [];
-    static POINTS = 0;
-    static COUNT = 0;
-    static CATEGORIES = [];
-    static COMPLETED = 0; //completed tasks for each day
-    static MISSED = [];
-    static ALLTIME = 0; //all time completed tasks
+    static ALLTASKS = [];   //array of all tasks that have been created
+    static COUNT = 0;       // the amount of tasks that have been created
+    static COMPLETED = 0;   //completed tasks for each day
+    static MISSED = [];     //array of tasks that have been canceled
+    static ALLTIME = 0;     //all time completed tasks
     
     name; 
-    completed;  //undefined = in progress, 
+    completed;
     date; 
     time;
     category;
