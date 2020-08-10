@@ -3,13 +3,15 @@ var idNum = 0;
 
 /** Called when the add button is pressed, generates a new task cell and updates its id (index in task array) */
 function addTask() {
-    idNum ++;  //id is always increasing, task.COUNT can decrease
+    //idNum starts at 0
+    idNum = Task.ALLTASKS.length  //id is how many tasks there are total, including deleted
+    //a task element's id is also its index in the Task.ALLTASKS array, for easy *findage*
     task = new Task("No Name");
     var table = document.getElementById("table");
     var row = table.insertRow();
     var cell = row.insertCell();
     console.log("idNum="+idNum);
-    var elements = `<input onKeyPress="checkSubmit(event);" id= "${idNum}" class="w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top" placeholder="Type Here, Press Enter to Save" style="width:30%">` +
+    var elements = `<input onKeyPress="checkSubmit(event, this);" id= "${idNum}" class="w3-input w3-animate-input w3-border-0 w3-bottombar w3-light-grey w3-margin-top" placeholder="Type Here, Press Enter to Save" style="width:30%">` +
         "<h5 class='w3-opacity w3-padding-4'><b></input> ";
     
     elements += "<br><span onclick=removeCompleted(this) class='w3-button w3-blue w3-round-xxlarge w3-margin-right w3-medium'>Mark Completed</span>";
@@ -21,14 +23,16 @@ function addTask() {
     drawPercentage();
 }
 
-function checkSubmit(e) {
+function checkSubmit(e, el) {
     if(e && e.keyCode == 13)
-        storeTask(idNum);
+        updateTask(el.id);
 }
 
-function storeTask(id){
+function updateTask(id){
+    console.log("id",id);
     name = `${document.getElementById(`${id}`).value}`; 
-    task.setName(name);
+    //console.log(document.getElementById(`${id}`));
+    Task.ALLTASKS[id].setName(name); 
     
     console.log("UPDATE", Task.ALLTASKS);
 }
@@ -45,9 +49,11 @@ function drawPercentage(){
 
 /** Removes the task from the display, and updates the array of tasks completed */
 function removeCompleted(n){
+    //get id of task element(input) from parent elements
     taskElement = n.parentElement.parentElement.parentElement;
     taskId = taskElement.childNodes[0].id;
-    curr = Task.ALLTASKS[taskId-1];
+    //find task instance using the array and the id(index)
+    curr = Task.ALLTASKS[taskId]; 
     curr.complete();
     taskElement.style.display = 'none';
     addCompletedToDisplay() 
@@ -59,14 +65,12 @@ function removeCompleted(n){
 function removeCancel(n){
     taskElement = n.parentElement.parentElement.parentElement;
     taskId = taskElement.childNodes[0].id;
-    curr = Task.ALLTASKS[taskId-1];
+    curr = Task.ALLTASKS[taskId];
     curr.incomplete();
-    console.log(curr);
     taskElement.style.display = 'none'; 
     createBlankRef(curr);//blank reflection, gets updated when they press enter
     modal.style.display = "block"; //open reflection modal
-    addMissedToDisplay();
-    drawPercentage();//I don't think we need this but whatever
+    addMissedToDisplay(); 
     console.log("Missed tasks:" , Task.MISSED);  
 }
 
@@ -74,9 +78,10 @@ function removeCancel(n){
 function removeDelete(n){
     taskElement = n.parentElement.parentElement.parentElement;
     taskElement.style.display = 'none';
-    Task.COUNT --;
     taskId = taskElement.childNodes[0].id;
-    Task.ALLTASKS[taskId-1] = null;
+    //"delete" the task
+    Task.COUNT --
+    Task.ALLTASKS[taskId] = null;
     drawPercentage();
     
 }
@@ -100,31 +105,9 @@ function checkRefForm(e){
 /** When the "Set as Profile" button is clicked, the profile picture is changed accordingly */
 function changePfp(name) {
     var profile = document.getElementById("profile");
-
-    if (name === "china") {
-        profile.innerHTML = "<img src='images/china.jpg' alt='Avatar' class='w3-image'></img>";
-    }
-    else if (name === "italy") {
-        profile.innerHTML = "<img src='images/italy.jpg' alt='Avatar' class='w3-image'></img>";
-    }
-    else if (name === "canada") {
-        profile.innerHTML = "<img src='images/canada.jpg' alt='Avatar' class='w3-image'></img>";
-    }
-    else if (name === "australia") {
-        profile.innerHTML = "<img src='images/australia.jpg' alt='Avatar' class='w3-image'></img>";
-    }
-    else if (name === "peru") {
-        profile.innerHTML = "<img src='images/peru.jpg' alt='Avatar' class='w3-image'></img>";
-    }
-    else if (name === "turkey") {
-        profile.innerHTML = "<img src='images/turkey.jpg' alt='Avatar' class='w3-image'></img>";
-    }
-    else if (name === "japan") {
-        profile.innerHTML = "<img src='images/japan.jpg' alt='Avatar' class='w3-image'></img>";
-    }
-    else if (name === "stlucia") {
-        profile.innerHTML = "<img src='images/stlucia.jpg' alt='Avatar' class='w3-image'></img>";
-    }
+    
+    profile.innerHTML = `<img src="images/${name}.jpg" alt='Avatar' class='w3-image'></img>`; 
+    
 }
 
 function addMissedToDisplay(){

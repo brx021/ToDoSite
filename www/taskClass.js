@@ -1,8 +1,8 @@
 class Task{
-    static ALLTASKS = [];       //array of all tasks that have been created
-    static COUNT = 0;           // the amount of tasks that have been created
+    static ALLTASKS = [];       //array of all tasks that have been created, deleted = null
+    static COUNT = 0;           //# of tasks that have been created/completed/missed(only goes down when tasks are deleted)
     static COMPLETED = 0;       //completed tasks for each day
-    static MISSED = [];         //array of tasks that have been canceled
+    static MISSED = [];         //array of tasks that have been missed
     static ALLTIME = 0;         //all time completed tasks
     static COMPLETEDARR = [];   // array of completed tasks
     name; 
@@ -41,9 +41,6 @@ class Task{
         this.reflection = ref;
     }
 
-    deleteOne(){
-        Task.COUNT --;
-    }
 
     complete(){
         this.completed = true;
