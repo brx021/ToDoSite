@@ -1,3 +1,3 @@
 # IvyHacksProject
-Project for the IvyHacks Hackathon,
-website under www/name.html
+Project for the IvyHacks Hackathon  
+Website under www/name.html
